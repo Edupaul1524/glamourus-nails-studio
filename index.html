@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -53,11 +52,11 @@
       background:#fff; width:100%; max-width:420px; border-radius:16px; padding:1rem;
       box-shadow:0 10px 30px rgba(0,0,0,.25);
     }
-    .modal h3{ margin:.2rem 0 0.5rem; color:var(--rosa); font-size:1.1rem; }
-    .resumen{ font-size:.92rem; color:#555; margin:.5rem 0 1rem; }
+    .modal h3{ margin:.2rem 0 .5rem; color:var(--rosa); font-size:1.1rem; }
+    .resumen{ font-size:.92rem; color:#555; margin:.3rem 0 .8rem; }
     .campo{ margin-bottom:.65rem; }
     .campo label{ display:block; font-size:.85rem; color:#666; margin-bottom:.25rem; }
-    .campo input{
+    .campo input, .campo select{
       width:100%; padding:.55rem .7rem; border:1px solid #ddd; border-radius:10px; font-size:.95rem;
     }
     .modal-actions{ display:flex; gap:.5rem; margin-top:.6rem; }
@@ -69,6 +68,8 @@
 <body>
 
   <header>
+    <img src="img/LOGO.jpeg" alt="Logo Glamourus Nails Studio"
+         style="width:160px;height:auto;margin-bottom:8px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
     <h1>GLAMOURUS NAILS STUDIO</h1>
     <p>Tu lugar para lucir uñas hermosas y únicas 💅</p>
     <a class="ig" href="https://www.instagram.com/glamourus_nailsstudio?igsh=cDhrYXRqMjY2dmVp&utm_source=qr" target="_blank" rel="noopener">
@@ -78,76 +79,40 @@
   </header>
 
   <div class="catalogo">
-    <!-- Cabello -->
+    <!-- Uñas -->
     <div class="categoria">
-      <!-- Cambia a tu imagen: img/cabello.jpg -->
-      <img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg" alt="Cabello">
+      <img src="https://images.pexels.com/photos/3997374/pexels-photo-3997374.jpeg" alt="Uñas">
       <div class="contenido">
-        <h2>Cabello</h2>
+        <h2>Uñas</h2>
         <div class="servicios">
-          <div class="servicio">Planchado</div>
-          <div class="servicio">Secado</div>
+          <div class="servicio">Uñas Esculpidas</div>
+          <div class="servicio">Manicure Semipermanente</div>
         </div>
-        <button class="btn" onclick="abrirFormulario('Cabello','Planchado')">Agendar cita</button>
+        <button class="btn" onclick="abrirFormulario('Uñas',['Uñas Esculpidas','Manicure Semipermanente'])">Agendar cita</button>
       </div>
     </div>
 
-    <!-- Depilación con Cera -->
+    <!-- Depilación -->
     <div class="categoria">
-      <!-- Cambia a tu imagen: img/depilacion-cera.jpg -->
-      <img src="https://images.pexels.com/photos/7464835/pexels-photo-7464835.jpeg" alt="Depilación con Cera">
+      <img src="https://images.pexels.com/photos/7464835/pexels-photo-7464835.jpeg" alt="Depilación de Cejas">
       <div class="contenido">
-        <h2>Depilación con Cera</h2>
+        <h2>Depilación</h2>
         <div class="servicios">
-          <div class="servicio">Axilas</div>
-          <div class="servicio">Bozo</div>
-          <div class="servicio">Cejas</div>
+          <div class="servicio">Depilación de Cejas</div>
         </div>
-        <button class="btn" onclick="abrirFormulario('Depilación con Cera','Axilas')">Agendar cita</button>
-      </div>
-    </div>
-
-    <!-- Depilación Gillette -->
-    <div class="categoria">
-      <!-- Cambia a tu imagen: img/depilacion-gillette.jpg -->
-      <img src="https://images.pexels.com/photos/8476876/pexels-photo-8476876.jpeg" alt="Depilación Gillette">
-      <div class="contenido">
-        <h2>Depilación Gillette</h2>
-        <div class="servicios">
-          <div class="servicio">Cejas</div>
-          <div class="servicio">Diseño + Sombreado + Depilación</div>
-        </div>
-        <button class="btn" onclick="abrirFormulario('Depilación Gillette','Cejas')">Agendar cita</button>
+        <button class="btn" onclick="abrirFormulario('Depilación',['Depilación de Cejas'])">Agendar cita</button>
       </div>
     </div>
 
     <!-- Pestañas -->
     <div class="categoria">
-      <!-- Cambia a tu imagen: img/pestanas.jpg -->
       <img src="https://images.pexels.com/photos/3764017/pexels-photo-3764017.jpeg" alt="Pestañas">
       <div class="contenido">
         <h2>Pestañas</h2>
         <div class="servicios">
           <div class="servicio">Lifting de Pestañas</div>
-          <div class="servicio">Pelo por Pelo</div>
-          <div class="servicio">Punto por Punto</div>
         </div>
-        <button class="btn" onclick="abrirFormulario('Pestañas','Lifting de Pestañas')">Agendar cita</button>
-      </div>
-    </div>
-
-    <!-- Uñas -->
-    <div class="categoria">
-      <!-- Cambia a tu imagen: img/unas.jpg -->
-      <img src="https://images.pexels.com/photos/3997374/pexels-photo-3997374.jpeg" alt="Uñas">
-      <div class="contenido">
-        <h2>Uñas</h2>
-        <div class="servicios">
-          <div class="servicio">Arreglo de una uña</div>
-          <div class="servicio">Baby Boomer con Acrílico</div>
-          <div class="servicio">Baño de Acrílico Permanente</div>
-        </div>
-        <button class="btn" onclick="abrirFormulario('Uñas','Arreglo de una uña')">Agendar cita</button>
+        <button class="btn" onclick="abrirFormulario('Pestañas',['Lifting de Pestañas'])">Agendar cita</button>
       </div>
     </div>
   </div>
@@ -166,10 +131,17 @@
         <label for="nombre">Tu nombre</label>
         <input id="nombre" type="text" placeholder="Escribe tu nombre" />
       </div>
+
+      <div class="campo">
+        <label for="servicio">Servicio</label>
+        <select id="servicio"></select>
+      </div>
+
       <div class="campo">
         <label for="fecha">Fecha</label>
         <input id="fecha" type="date" />
       </div>
+
       <div class="campo">
         <label for="hora">Hora</label>
         <input id="hora" type="time" />
@@ -183,16 +155,22 @@
   </div>
 
   <script>
-    const numeroWhatsApp = "593987356186"; // 0987356186 en formato internacional (Ecuador)
-    let selCategoria = "", selServicio = "";
+    const numeroWhatsApp = "593987356186"; 
+    let selCategoria = "", listaServicios = [];
 
-    function abrirFormulario(categoria, servicio){
+    function abrirFormulario(categoria, servicios){
       selCategoria = categoria;
-      selServicio = servicio;
-      const resumen = document.getElementById('resumen');
-      resumen.textContent = `Categoría: ${selCategoria}  |  Servicio: ${selServicio}`;
-      document.getElementById('overlay').style.display = 'flex';
-      // Pre-seleccionar fecha a hoy
+      listaServicios = servicios;
+
+      document.getElementById('resumen').textContent = `Categoría: ${selCategoria}`;
+      const sel = document.getElementById('servicio');
+      sel.innerHTML = "";
+      listaServicios.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s; opt.textContent = s;
+        sel.appendChild(opt);
+      });
+
       const f = document.getElementById('fecha');
       if(!f.value){
         const hoy = new Date();
@@ -201,6 +179,8 @@
         const dd = String(hoy.getDate()).padStart(2,'0');
         f.value = `${yyyy}-${mm}-${dd}`;
       }
+
+      document.getElementById('overlay').style.display = 'flex';
       document.getElementById('nombre').focus();
     }
 
@@ -210,18 +190,18 @@
 
     function enviarWhatsApp(){
       const nombre = document.getElementById('nombre').value.trim();
+      const servicio = document.getElementById('servicio').value;
       const fecha = document.getElementById('fecha').value;
       const hora = document.getElementById('hora').value;
 
-      if(!nombre || !fecha || !hora){
-        alert("Por favor completa tu nombre, fecha y hora.");
+      if(!nombre || !servicio || !fecha || !hora){
+        alert("Por favor completa tu nombre, servicio, fecha y hora.");
         return;
       }
 
-      const msg = `Hola! Soy ${nombre}. Quiero agendar *${selServicio}* (${selCategoria}) en GLAMOURUS NAILS STUDIO para el ${fecha} a las ${hora}. Gracias!`;
+      const msg = `Hola! Soy ${nombre}. Quiero agendar *${servicio}* (${selCategoria}) en GLAMOURUS NAILS STUDIO para el ${fecha} a las ${hora}. Gracias!`;
       const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(msg)}`;
 
-      // Intento abrir en la misma pestaña (mejor en móviles)
       try { window.location.href = url; }
       catch { window.open(url, "_blank"); }
 
@@ -231,3 +211,4 @@
 
 </body>
 </html>
+
