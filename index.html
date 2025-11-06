@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +13,10 @@
       background: linear-gradient(to bottom, var(--bg1), #ffffff); color:#444;
     }
     header{ text-align:center; padding:2rem 1rem 1rem; }
+    header img.logo{
+      width:160px; height:auto; margin-bottom:8px; border-radius:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
     header h1{ color:var(--rosa); font-size:2rem; margin:.2rem 0; }
     header p{ color:#777; margin:0 0 .5rem; }
     header a.ig{
@@ -68,8 +73,7 @@
 <body>
 
   <header>
-    <img src="img/LOGO.jpeg" alt="Logo Glamourus Nails Studio"
-         style="width:160px;height:auto;margin-bottom:8px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+    <img src="img/LOGO.jpeg" alt="Logo Glamourus Nails Studio" class="logo">
     <h1>GLAMOURUS NAILS STUDIO</h1>
     <p>Tu lugar para lucir uñas hermosas y únicas 💅</p>
     <a class="ig" href="https://www.instagram.com/glamourus_nailsstudio?igsh=cDhrYXRqMjY2dmVp&utm_source=qr" target="_blank" rel="noopener">
@@ -79,9 +83,63 @@
   </header>
 
   <div class="catalogo">
+    <!-- Cabello -->
+    <div class="categoria">
+      <img src="img/Cabello.jpeg" alt="Cabello">
+      <div class="contenido">
+        <h2>Cabello</h2>
+        <div class="servicios">
+          <div class="servicio">Planchado</div>
+          <div class="servicio">Secado</div>
+        </div>
+        <button class="btn" onclick="abrirFormulario('Cabello',['Planchado','Secado'])">Agendar cita</button>
+      </div>
+    </div>
+
+    <!-- Depilación con Cera -->
+    <div class="categoria">
+      <img src="img/Depilación Cera.jpeg" alt="Depilación con Cera">
+      <div class="contenido">
+        <h2>Depilación con Cera</h2>
+        <div class="servicios">
+          <div class="servicio">Axilas</div>
+          <div class="servicio">Bozo</div>
+          <div class="servicio">Cejas</div>
+        </div>
+        <button class="btn" onclick="abrirFormulario('Depilación con Cera',['Axilas','Bozo','Cejas'])">Agendar cita</button>
+      </div>
+    </div>
+
+    <!-- Depilación Gillette -->
+    <div class="categoria">
+      <img src="img/Depilación GIllette.jpeg" alt="Depilación Gillette">
+      <div class="contenido">
+        <h2>Depilación Gillette</h2>
+        <div class="servicios">
+          <div class="servicio">Cejas</div>
+          <div class="servicio">Diseño + Sombreado + Depilación</div>
+        </div>
+        <button class="btn" onclick="abrirFormulario('Depilación Gillette',['Cejas','Diseño + Sombreado + Depilación'])">Agendar cita</button>
+      </div>
+    </div>
+
+    <!-- Pestañas -->
+    <div class="categoria">
+      <img src="img/Pestañas.jpeg" alt="Pestañas">
+      <div class="contenido">
+        <h2>Pestañas</h2>
+        <div class="servicios">
+          <div class="servicio">Lifting de Pestañas</div>
+          <div class="servicio">Pelo por Pelo</div>
+          <div class="servicio">Punto por Punto</div>
+        </div>
+        <button class="btn" onclick="abrirFormulario('Pestañas',['Lifting de Pestañas','Pelo por Pelo','Punto por Punto'])">Agendar cita</button>
+      </div>
+    </div>
+
     <!-- Uñas -->
     <div class="categoria">
-      <img src="https://images.pexels.com/photos/3997374/pexels-photo-3997374.jpeg" alt="Uñas">
+      <img src="img/Uñas.jpeg" alt="Uñas">
       <div class="contenido">
         <h2>Uñas</h2>
         <div class="servicios">
@@ -89,30 +147,6 @@
           <div class="servicio">Manicure Semipermanente</div>
         </div>
         <button class="btn" onclick="abrirFormulario('Uñas',['Uñas Esculpidas','Manicure Semipermanente'])">Agendar cita</button>
-      </div>
-    </div>
-
-    <!-- Depilación -->
-    <div class="categoria">
-      <img src="https://images.pexels.com/photos/7464835/pexels-photo-7464835.jpeg" alt="Depilación de Cejas">
-      <div class="contenido">
-        <h2>Depilación</h2>
-        <div class="servicios">
-          <div class="servicio">Depilación de Cejas</div>
-        </div>
-        <button class="btn" onclick="abrirFormulario('Depilación',['Depilación de Cejas'])">Agendar cita</button>
-      </div>
-    </div>
-
-    <!-- Pestañas -->
-    <div class="categoria">
-      <img src="https://images.pexels.com/photos/3764017/pexels-photo-3764017.jpeg" alt="Pestañas">
-      <div class="contenido">
-        <h2>Pestañas</h2>
-        <div class="servicios">
-          <div class="servicio">Lifting de Pestañas</div>
-        </div>
-        <button class="btn" onclick="abrirFormulario('Pestañas',['Lifting de Pestañas'])">Agendar cita</button>
       </div>
     </div>
   </div>
@@ -194,21 +228,4 @@
       const fecha = document.getElementById('fecha').value;
       const hora = document.getElementById('hora').value;
 
-      if(!nombre || !servicio || !fecha || !hora){
-        alert("Por favor completa tu nombre, servicio, fecha y hora.");
-        return;
-      }
-
-      const msg = `Hola! Soy ${nombre}. Quiero agendar *${servicio}* (${selCategoria}) en GLAMOURUS NAILS STUDIO para el ${fecha} a las ${hora}. Gracias!`;
-      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(msg)}`;
-
-      try { window.location.href = url; }
-      catch { window.open(url, "_blank"); }
-
-      cerrarFormulario();
-    }
-  </script>
-
-</body>
-</html>
-
+      if
