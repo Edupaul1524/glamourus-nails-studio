@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GLAMOURUS NAILS STUDIO</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #ffe6f2, #ffffff);
+      color: #444;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+    header h1 {
+      color: #d63384;
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+    header p {
+      color: #777;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .catalogo {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .categoria {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    .categoria:hover {
+      transform: scale(1.03);
+    }
+    .categoria img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .contenido {
+      padding: 1rem;
+    }
+    .contenido h2 {
+      color: #d63384;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .servicio {
+      margin-bottom: 0.4rem;
+    }
+    button {
+      background-color: #d63384;
+      border: none;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #b02a6e;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.85rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>GLAMOURUS NAILS STUDIO</h1>
+    <p>Tu lugar para lucir uñas hermosas y únicas 💅</p>
+  </header>
+
+  <div class="catalogo">
+
+    <!-- Cabello -->
+    <div class="categoria">
+      <img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg" alt="Cabello">
+      <div class="contenido">
+        <h2>Cabello</h2>
+        <div class="servicio">Planchado</div>
+        <div class="servicio">Secado</div>
+        <button onclick="agendar('Cabello')">Agendar cita</button>
+      </div>
+    </div>
+
+    <!-- Depilación con Cera -->
+    <div class="categoria">
+      <img src="https://images.pexels.com/photos/7464835/pexels-photo-7464835.jpeg" alt="Depilación con Cera">
+      <div class="contenido">
+        <h2>Depilación con Cera</h2>
+        <div class="servicio">Axilas</div>
+        <div class="servicio">Bozo</div>
+        <div class="servicio">Cejas</div>
+        <button onclick="agendar('Depilación con Cera')">Agendar cita</button>
+      </div>
+    </div>
+
+    <!-- Depilación Gillette -->
+    <div class="categoria">
+      <img src="https://images.pexels.com/photos/8476876/pexels-photo-8476876.jpeg" alt="Depilación Gillette">
+      <div class="contenido">
+        <h2>Depilación Gillette</h2>
+        <div class="servicio">Cejas</div>
+        <div class="servicio">Diseño + Sombreado + Depilación</div>
+        <button onclick="agendar('Depilación Gillette')">Agendar cita</button>
+      </div>
+    </div>
+
+    <!-- Pestañas -->
+    <div class="categoria">
+      <img src="https://images.pexels.com/photos/3764017/pexels-photo-3764017.jpeg" alt="Pestañas">
+      <div class="contenido">
+        <h2>Pestañas</h2>
+        <div class="servicio">Lifting de Pestañas</div>
+        <div class="servicio">Pelo por Pelo</div>
+        <div class="servicio">Punto por Punto</div>
+        <button onclick="agendar('Pestañas')">Agendar cita</button>
+      </div>
+    </div>
+
+    <!-- Uñas -->
+    <div class="categoria">
+      <img src="https://images.pexels.com/photos/3997374/pexels-photo-3997374.jpeg" alt="Uñas">
+      <div class="contenido">
+        <h2>Uñas</h2>
+        <div class="servicio">Arreglo de una uña</div>
+        <div class="servicio">Baby Boomer con Acrílico</div>
+        <div class="servicio">Baño de Acrílico Permanente</div>
+        <button onclick="agendar('Uñas')">Agendar cita</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    📍 Carcelén Alto – Quito | © GLAMOURUS NAILS STUDIO
+  </footer>
+
+  <script>
+    function agendar(servicio) {
+      const numero = "593987356186";
+      const mensaje = `Hola! Me gustaría agendar una cita para ${servicio} en GLAMOURUS NAILS STUDIO.`;
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
 
