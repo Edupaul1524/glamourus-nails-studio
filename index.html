@@ -98,59 +98,43 @@
 
     button.btn:hover { background: var(--rosa-osc); }
 
-    <section class="testimonios">
-  <h2>Testimonios de nuestras clientas 💖</h2>
-
-  <div class="slider">
-    <div class="slide active">
-      <p>⭐⭐⭐⭐⭐ “Excelente atención, mis uñas quedaron perfectas y el ambiente es muy relajante.” – <em>Karla</em></p>
-    </div>
-    <div class="slide">
-      <p>⭐⭐⭐⭐⭐ “El lifting de pestañas me encantó, súper recomendado.” – <em>María</em></p>
-    </div>
-    <div class="slide">
-      <p>⭐⭐⭐⭐⭐ “Profesionales y muy amables, siempre salgo feliz.” – <em>Diana</em></p>
-    </div>
-    <div class="slide">
-      <p>⭐⭐⭐⭐⭐ “Me encantó el trato y la dedicación, sin duda volveré pronto 💅.” – <em>Andrea</em></p>
-    </div>
-  </div>
-</section>
-/* SLIDER DE TESTIMONIOS */
-.slider {
-  position: relative;
-  max-width: 700px;
-  margin: 0 auto;
-  overflow: hidden;
-  min-height: 120px;
-}
-
-.slide {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  transition: opacity 1s ease;
-}
-
-.slide.active {
-  opacity: 1;
-  position: relative;
-}
-<script>
-  // Carrusel automático de testimonios
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-
-  function showNextSlide() {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }
-
-  setInterval(showNextSlide, 4000); // cambia cada 4 segundos
-</script>
+    /* TESTIMONIOS (SLIDER) */
+    .testimonios {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #fff;
+      animation: fadeIn 1s ease;
+    }
+    .testimonios h2 {
+      color: var(--rosa);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+    .slider {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      overflow: hidden;
+      min-height: 120px;
+    }
+    .slide {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transition: opacity 1s ease;
+    }
+    .slide.active {
+      opacity: 1;
+      position: relative;
+    }
+    .slide p {
+      font-style: italic;
+      color: #555;
+      max-width: 650px;
+      margin: 0 auto;
+    }
 
     /* CONTACTO */
     .contacto {
@@ -258,22 +242,20 @@
 
   <section class="testimonios">
     <h2>Testimonios de nuestras clientas 💖</h2>
-    <p>⭐⭐⭐⭐⭐ “Excelente atención, mis uñas quedaron perfectas y el ambiente es muy relajante.” – *Karla*</p>
-    <p>⭐⭐⭐⭐⭐ “El lifting de pestañas me encantó, súper recomendado.” – *María*</p>
-    <p>⭐⭐⭐⭐⭐ “Profesionales y muy amables, siempre salgo feliz.” – *Diana*</p>
+    <div class="slider">
+      <div class="slide active"><p>⭐⭐⭐⭐⭐ “Excelente atención, mis uñas quedaron perfectas y el ambiente es muy relajante.” – <em>Karla</em></p></div>
+      <div class="slide"><p>⭐⭐⭐⭐⭐ “El lifting de pestañas me encantó, súper recomendado.” – <em>María</em></p></div>
+      <div class="slide"><p>⭐⭐⭐⭐⭐ “Profesionales y muy amables, siempre salgo feliz.” – <em>Diana</em></p></div>
+      <div class="slide"><p>⭐⭐⭐⭐⭐ “Me encantó el trato y la dedicación, sin duda volveré pronto 💅.” – <em>Andrea</em></p></div>
+    </div>
   </section>
 
-<section class="contacto">
-  <h2>Horarios y Ubicación</h2>
-  <p>🕒 Lunes a Domingo, 10:00 a 19:00 (incluye feriados)</p>
-  <p>
-    📍 <a href="https://www.google.com/maps?q=0%C2%B005'22.7%22S+78%C2%B028'21.2%22W" target="_blank">
-      Carcelén Alto – Quito
-    </a>
-  </p>
-  <p>📞 WhatsApp: <a href="https://wa.me/593987356186" target="_blank">0987356186</a></p>
-</section>
-
+  <section class="contacto">
+    <h2>Horarios y Ubicación</h2>
+    <p>🕒 Lunes a Domingo, 10:00 a 19:00 (incluye feriados)</p>
+    <p>📍 <a href="https://www.google.com/maps?q=0%C2%B005'22.7%22S+78%C2%B028'21.2%22W" target="_blank">Carcelén Alto – Quito</a></p>
+    <p>📞 WhatsApp: <a href="https://wa.me/593987356186" target="_blank">0987356186</a></p>
+  </section>
 
   <footer>
     © 2025 GLAMOURUS NAILS STUDIO | Diseñado con 💖 en Quito
@@ -291,6 +273,15 @@
       const mensaje = `Hola! Quiero agendar una cita en *${categoria}* en GLAMOURUS NAILS STUDIO 💅`;
       window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, "_blank");
     }
+
+    // Slider automático de testimonios
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 4000);
   </script>
 
 </body>
