@@ -4,31 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GLAMOURUS NAILS STUDIO</title>
+
+  <!-- Tipografía elegante -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --rosa: #d63384;
       --rosa-osc: #b02a6e;
       --bg1: #ffe6f2;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to bottom, var(--bg1), #fff);
       color: #444;
+      overflow-x: hidden;
     }
+
+    /* HEADER */
     header {
       text-align: center;
-      padding: 2rem 1rem 1rem;
+      padding: 2rem 1rem;
       background: var(--bg1);
+      animation: fadeInDown 1.2s ease;
     }
     header h1 {
+      font-family: 'Great Vibes', cursive;
       color: var(--rosa);
-      font-size: 2rem;
-      margin-bottom: .5rem;
+      font-size: 2.8rem;
     }
     header p {
-      color: #777;
-      margin-bottom: .8rem;
+      color: #555;
+      margin: 0.3rem 0 0.8rem;
+      font-size: 1rem;
     }
     header a.ig {
       display: inline-flex;
@@ -43,6 +54,7 @@
       height: 18px;
     }
 
+    /* CATÁLOGO */
     .catalogo {
       max-width: 900px;
       margin: 0 auto;
@@ -50,21 +62,29 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
+      animation: fadeInUp 1s ease;
     }
+
     .categoria {
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 2px 12px rgba(0,0,0,.08);
       text-align: center;
       padding: 2rem 1rem;
-      transition: transform .2s ease;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
-    .categoria:hover { transform: scale(1.03); }
+
+    .categoria:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    }
+
     .categoria h2 {
       color: var(--rosa);
       font-size: 1.3rem;
       margin-bottom: 1rem;
     }
+
     button.btn {
       background: var(--rosa);
       color: #fff;
@@ -75,16 +95,57 @@
       font-size: .95rem;
       transition: background .2s;
     }
+
     button.btn:hover { background: var(--rosa-osc); }
 
-    footer {
+    /* TESTIMONIOS */
+    .testimonios {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #fff;
+      animation: fadeIn 1s ease;
+    }
+    .testimonios h2 {
+      color: var(--rosa);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+    .testimonios p {
+      max-width: 700px;
+      margin: 0.8rem auto;
+      font-style: italic;
+      color: #555;
+    }
+
+    /* CONTACTO */
+    .contacto {
       text-align: center;
       padding: 2rem 1rem;
+      background: var(--bg1);
+    }
+    .contacto h2 {
+      color: var(--rosa);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .contacto p {
+      margin: 0.5rem 0;
+    }
+    .contacto a {
+      color: var(--rosa-osc);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
       color: #777;
       font-size: .9rem;
     }
 
-    /* Botón flotante de WhatsApp */
+    /* BOTÓN WHATSAPP */
     .whatsapp-float {
       position: fixed;
       bottom: 18px;
@@ -96,18 +157,36 @@
       z-index: 1000;
       transition: transform .2s;
     }
-    .whatsapp-float:hover { transform: scale(1.1); }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
     .whatsapp-float img {
       width: 45px;
       height: 45px;
       display: block;
+    }
+
+    /* ANIMACIONES */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>GLAMOURUS NAILS STUDIO</h1>
+    <h1>Glamourus Nails Studio</h1>
     <p>Tu lugar para lucir uñas hermosas y únicas 💅</p>
     <a class="ig" href="https://www.instagram.com/glamourus_nailsstudio?igsh=cDhrYXRqMjY2dmVp&utm_source=qr" target="_blank" rel="noopener">
       <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
@@ -142,8 +221,22 @@
     </div>
   </div>
 
+  <section class="testimonios">
+    <h2>Testimonios de nuestras clientas 💖</h2>
+    <p>⭐⭐⭐⭐⭐ “Excelente atención, mis uñas quedaron perfectas y el ambiente es muy relajante.” – *Karla*</p>
+    <p>⭐⭐⭐⭐⭐ “El lifting de pestañas me encantó, súper recomendado.” – *María*</p>
+    <p>⭐⭐⭐⭐⭐ “Profesionales y muy amables, siempre salgo feliz.” – *Diana*</p>
+  </section>
+
+  <section class="contacto">
+    <h2>Horarios y Ubicación</h2>
+    <p>🕒 Lunes a Domingo, 10:00 a 19:00 (incluye feriados)</p>
+    <p>📍 <a href="https://www.google.com/maps?q=Carcelén+Alto,+Quito,+Ecuador" target="_blank">Carcelén Alto – Quito</a></p>
+    <p>📞 WhatsApp: <a href="https://wa.me/593987356186" target="_blank">0987356186</a></p>
+  </section>
+
   <footer>
-    📍 Carcelén Alto – Quito | © GLAMOURUS NAILS STUDIO
+    © 2025 GLAMOURUS NAILS STUDIO | Diseñado con 💖 en Quito
   </footer>
 
   <!-- BOTÓN FLOTANTE DE WHATSAPP -->
@@ -162,4 +255,3 @@
 
 </body>
 </html>
-
