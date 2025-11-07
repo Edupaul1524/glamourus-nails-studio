@@ -70,6 +70,44 @@
       height: 18px;
     }
 
+    /* GALERÍA */
+    .galeria {
+      background: #fff;
+      padding: 3rem 1rem;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+    .galeria h2 {
+      color: var(--rosa);
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .galeria-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      transition: transform .3s ease, box-shadow .3s ease;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    .galeria-grid img.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .galeria-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 18px rgba(0,0,0,0.2);
+    }
+
     /* CATÁLOGO */
     .catalogo {
       max-width: 900px;
@@ -91,29 +129,25 @@
       opacity: 0;
       transform: translateY(40px);
     }
-
     .categoria.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .categoria:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 16px rgba(0,0,0,.12);
     }
-
     .categoria h2 {
       color: var(--rosa);
       font-size: 1.3rem;
       margin-bottom: 0;
     }
 
-    /* TESTIMONIOS (SLIDER) */
+    /* TESTIMONIOS */
     .testimonios {
       text-align: center;
       padding: 3rem 1rem;
       background: #fff;
-      animation: fadeIn 1s ease;
     }
     .testimonios h2 {
       color: var(--rosa);
@@ -186,37 +220,26 @@
       z-index: 1000;
       transition: transform .2s;
     }
-
     .whatsapp-float:hover {
       transform: scale(1.1);
     }
-
     .whatsapp-float img {
       width: 45px;
       height: 45px;
       display: block;
     }
 
-    /* ANIMACIONES */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
 
-  <!-- BANNER -->
   <div class="banner">
     <h1>Glamourus Nails Studio</h1>
     <p>Belleza, elegancia y estilo en cada detalle 💅<br>Reserva tu momento de cuidado con nosotras.</p>
   </div>
 
-  <!-- HEADER -->
   <header>
     <p>Carcelén Alto – Quito</p>
     <a class="ig" href="https://www.instagram.com/glamourus_nailsstudio?igsh=cDhrYXRqMjY2dmVp&utm_source=qr" target="_blank" rel="noopener">
@@ -225,7 +248,18 @@
     </a>
   </header>
 
-  <!-- CATEGORÍAS -->
+  <!-- GALERÍA -->
+  <section class="galeria">
+    <h2>Nuestros Trabajos 💅</h2>
+    <div class="galeria-grid">
+      <img src="imagen/galeria 1.jpg" alt="Galería 1">
+      <img src="imagen/galeria 2.jpg" alt="Galería 2">
+      <img src="imagen/galeria 3.jpg" alt="Galería 3">
+      <img src="imagen/galeria 4.jpg" alt="Galería 4">
+      <img src="imagen/galeria 5.jpg" alt="Galería 5">
+    </div>
+  </section>
+
   <div class="catalogo">
     <div class="categoria" onclick="abrirWhatsApp('Cabello')"><h2>Cabello</h2></div>
     <div class="categoria" onclick="abrirWhatsApp('Depilación con Cera')"><h2>Depilación con Cera</h2></div>
@@ -234,7 +268,6 @@
     <div class="categoria" onclick="abrirWhatsApp('Uñas')"><h2>Uñas</h2></div>
   </div>
 
-  <!-- TESTIMONIOS -->
   <section class="testimonios">
     <h2>Testimonios de nuestras clientas 💖</h2>
     <div class="slider">
@@ -245,7 +278,6 @@
     </div>
   </section>
 
-  <!-- CONTACTO -->
   <section class="contacto">
     <h2>Horarios y Ubicación</h2>
     <p>🕒 Lunes a Domingo, 10:00 a 19:00 (incluye feriados)</p>
@@ -253,26 +285,22 @@
     <p>📞 WhatsApp: <a href="https://wa.me/593987356186" target="_blank">0987356186</a></p>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     © 2025 GLAMOURUS NAILS STUDIO | Diseñado con 💖 en Quito
   </footer>
 
-  <!-- BOTÓN WHATSAPP -->
   <a href="https://wa.me/593987356186?text=Hola!%20Quiero%20una%20cita%20en%20GLAMOURUS%20NAILS%20STUDIO%20💅"
      class="whatsapp-float" target="_blank" rel="noopener">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
   </a>
 
   <script>
-    // WhatsApp directo
     function abrirWhatsApp(categoria){
       const numeroWhatsApp = "593987356186";
       const mensaje = `Hola! Quiero agendar una cita en *${categoria}* en GLAMOURUS NAILS STUDIO 💅`;
       window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, "_blank");
     }
 
-    // Slider automático de testimonios
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     setInterval(() => {
@@ -281,17 +309,18 @@
       slides[currentSlide].classList.add('active');
     }, 4000);
 
-    // Animación de aparición por scroll
+    // Animación de categorías y galería
     const categorias = document.querySelectorAll('.categoria');
-    function mostrarCategorias() {
+    const fotos = document.querySelectorAll('.galeria-grid img');
+    function mostrarAlDesplazar() {
       const trigger = window.innerHeight * 0.9;
-      categorias.forEach(cat => {
-        const top = cat.getBoundingClientRect().top;
-        if (top < trigger) cat.classList.add('visible');
+      [...categorias, ...fotos].forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < trigger) el.classList.add('visible');
       });
     }
-    window.addEventListener('scroll', mostrarCategorias);
-    mostrarCategorias();
+    window.addEventListener('scroll', mostrarAlDesplazar);
+    mostrarAlDesplazar();
   </script>
 
 </body>
