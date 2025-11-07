@@ -239,7 +239,28 @@
     <h1>Glamourus Nails Studio</h1>
     <p>Belleza, elegancia y estilo en cada detalle 💅<br>Reserva tu momento de cuidado con nosotras.</p>
   </div>
+<section class="lema">
+  <p id="frase-animada">Belleza con estilo ✨</p>
+</section>
 
+<!-- SECCIÓN DE COMPROMISO -->
+<section class="compromiso">
+  <div class="compromiso-item">
+    <span>💅</span>
+    <h3>Cuidado Profesional</h3>
+    <p>Trabajamos con técnicas seguras y productos de alta calidad.</p>
+  </div>
+  <div class="compromiso-item">
+    <span>💗</span>
+    <h3>Productos Premium</h3>
+    <p>Solo usamos marcas reconocidas para resultados duraderos y perfectos.</p>
+  </div>
+  <div class="compromiso-item">
+    <span>🌸</span>
+    <h3>Atención Personalizada</h3>
+    <p>Cada detalle está pensado para que disfrutes una experiencia única.</p>
+  </div>
+</section>
   <header>
     <p>Carcelén Alto – Quito</p>
     <a class="ig" href="https://www.instagram.com/glamourus_nailsstudio?igsh=cDhrYXRqMjY2dmVp&utm_source=qr" target="_blank" rel="noopener">
@@ -312,6 +333,25 @@
     }
     window.addEventListener('scroll', mostrarAlDesplazar);
     mostrarAlDesplazar();
+
+    // Frases animadas rotatorias
+const frases = [
+  "Belleza con estilo ✨",
+  "Confianza y glamour 💖",
+  "Cuidamos cada detalle 💅",
+  "Tu bienestar, nuestra pasión 🌸"
+];
+let fraseIndex = 0;
+const fraseElement = document.getElementById("frase-animada");
+
+setInterval(() => {
+  fraseIndex = (fraseIndex + 1) % frases.length;
+  fraseElement.style.animation = "cambiarFrase 2s ease";
+  setTimeout(() => {
+    fraseElement.textContent = frases[fraseIndex];
+  }, 500);
+}, 4000);
+
   </script>
 
 </body>
