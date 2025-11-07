@@ -24,17 +24,33 @@
       overflow-x: hidden;
     }
 
+    /* BANNER */
+    .banner {
+      background: linear-gradient(135deg, #ffb6d9, #ffd6e7);
+      text-align: center;
+      padding: 5rem 1rem 4rem;
+      animation: fadeInDown 1.2s ease;
+    }
+    .banner h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: var(--rosa);
+      margin-bottom: 1rem;
+    }
+    .banner p {
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+
     /* HEADER */
     header {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 1rem;
       background: var(--bg1);
-      animation: fadeInDown 1.2s ease;
-    }
-    header h1 {
-      font-family: 'Great Vibes', cursive;
-      color: var(--rosa);
-      font-size: 2.8rem;
+      animation: fadeIn 1s ease;
     }
     header p {
       color: #555;
@@ -72,6 +88,7 @@
       text-align: center;
       padding: 2rem 1rem;
       transition: transform .3s ease, box-shadow .3s ease;
+      cursor: pointer;
     }
 
     .categoria:hover {
@@ -82,21 +99,8 @@
     .categoria h2 {
       color: var(--rosa);
       font-size: 1.3rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0;
     }
-
-    button.btn {
-      background: var(--rosa);
-      color: #fff;
-      border: none;
-      padding: .6rem 1.5rem;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: .95rem;
-      transition: background .2s;
-    }
-
-    button.btn:hover { background: var(--rosa-osc); }
 
     /* TESTIMONIOS (SLIDER) */
     .testimonios {
@@ -204,42 +208,45 @@
 </head>
 <body>
 
-  <header>
+  <!-- BANNER PRINCIPAL -->
+  <div class="banner">
     <h1>Glamourus Nails Studio</h1>
-    <p>Tu lugar para lucir uñas hermosas y únicas 💅</p>
+    <p>Belleza, elegancia y estilo en cada detalle 💅<br>Reserva tu momento de cuidado con nosotras.</p>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <p>Carcelén Alto – Quito</p>
     <a class="ig" href="https://www.instagram.com/glamourus_nailsstudio?igsh=cDhrYXRqMjY2dmVp&utm_source=qr" target="_blank" rel="noopener">
       <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
       <span>Síguenos en Instagram</span>
     </a>
   </header>
 
+  <!-- CATEGORÍAS -->
   <div class="catalogo">
-    <div class="categoria">
+    <div class="categoria" onclick="abrirWhatsApp('Cabello')">
       <h2>Cabello</h2>
-      <button class="btn" onclick="abrirWhatsApp('Cabello')">Agendar cita</button>
     </div>
 
-    <div class="categoria">
+    <div class="categoria" onclick="abrirWhatsApp('Depilación con Cera')">
       <h2>Depilación con Cera</h2>
-      <button class="btn" onclick="abrirWhatsApp('Depilación con Cera')">Agendar cita</button>
     </div>
 
-    <div class="categoria">
+    <div class="categoria" onclick="abrirWhatsApp('Depilación Gillette')">
       <h2>Depilación Gillette</h2>
-      <button class="btn" onclick="abrirWhatsApp('Depilación Gillette')">Agendar cita</button>
     </div>
 
-    <div class="categoria">
+    <div class="categoria" onclick="abrirWhatsApp('Pestañas')">
       <h2>Pestañas</h2>
-      <button class="btn" onclick="abrirWhatsApp('Pestañas')">Agendar cita</button>
     </div>
 
-    <div class="categoria">
+    <div class="categoria" onclick="abrirWhatsApp('Uñas')">
       <h2>Uñas</h2>
-      <button class="btn" onclick="abrirWhatsApp('Uñas')">Agendar cita</button>
     </div>
   </div>
 
+  <!-- TESTIMONIOS -->
   <section class="testimonios">
     <h2>Testimonios de nuestras clientas 💖</h2>
     <div class="slider">
@@ -250,6 +257,7 @@
     </div>
   </section>
 
+  <!-- CONTACTO -->
   <section class="contacto">
     <h2>Horarios y Ubicación</h2>
     <p>🕒 Lunes a Domingo, 10:00 a 19:00 (incluye feriados)</p>
@@ -257,16 +265,18 @@
     <p>📞 WhatsApp: <a href="https://wa.me/593987356186" target="_blank">0987356186</a></p>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     © 2025 GLAMOURUS NAILS STUDIO | Diseñado con 💖 en Quito
   </footer>
 
-  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <!-- BOTÓN WHATSAPP -->
   <a href="https://wa.me/593987356186?text=Hola!%20Quiero%20una%20cita%20en%20GLAMOURUS%20NAILS%20STUDIO%20💅"
      class="whatsapp-float" target="_blank" rel="noopener">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
   </a>
 
+  <!-- SCRIPT -->
   <script>
     function abrirWhatsApp(categoria){
       const numeroWhatsApp = "593987356186";
