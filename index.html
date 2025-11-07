@@ -19,22 +19,16 @@
     header {
       text-align: center;
       padding: 2rem 1rem 1rem;
-    }
-    header img.logo {
-      width: 160px;
-      height: auto;
-      margin-bottom: 8px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background: var(--bg1);
     }
     header h1 {
       color: var(--rosa);
       font-size: 2rem;
-      margin: .2rem 0;
+      margin-bottom: .5rem;
     }
     header p {
       color: #777;
-      margin-bottom: .5rem;
+      margin-bottom: .8rem;
     }
     header a.ig {
       display: inline-flex;
@@ -50,47 +44,39 @@
     }
 
     .catalogo {
-      max-width: 1000px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 2rem 1rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
     }
     .categoria {
       background: #fff;
       border-radius: 16px;
-      overflow: hidden;
       box-shadow: 0 2px 12px rgba(0,0,0,.08);
-      transition: transform .2s ease;
       text-align: center;
+      padding: 2rem 1rem;
+      transition: transform .2s ease;
     }
-    .categoria:hover { transform: scale(1.02); }
-    .categoria img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-    }
-    .contenido {
-      padding: 1rem;
-    }
-    .contenido h2 {
+    .categoria:hover { transform: scale(1.03); }
+    .categoria h2 {
       color: var(--rosa);
-      font-size: 1.2rem;
-      margin-bottom: .6rem;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
     }
     button.btn {
       background: var(--rosa);
       color: #fff;
       border: none;
-      padding: .6rem 1rem;
+      padding: .6rem 1.5rem;
       border-radius: 999px;
       cursor: pointer;
       font-size: .95rem;
       transition: background .2s;
     }
     button.btn:hover { background: var(--rosa-osc); }
+
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -110,9 +96,7 @@
       z-index: 1000;
       transition: transform .2s;
     }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-    }
+    .whatsapp-float:hover { transform: scale(1.1); }
     .whatsapp-float img {
       width: 45px;
       height: 45px;
@@ -123,7 +107,6 @@
 <body>
 
   <header>
-    <img src="imagen/logo.jpg" alt="Logo Glamourus Nails Studio" class="logo">
     <h1>GLAMOURUS NAILS STUDIO</h1>
     <p>Tu lugar para lucir uñas hermosas y únicas 💅</p>
     <a class="ig" href="https://www.instagram.com/glamourus_nailsstudio?igsh=cDhrYXRqMjY2dmVp&utm_source=qr" target="_blank" rel="noopener">
@@ -134,43 +117,28 @@
 
   <div class="catalogo">
     <div class="categoria">
-      <img src="imagen/Cabello.jpeg" alt="Cabello">
-      <div class="contenido">
-        <h2>Cabello</h2>
-        <button class="btn" onclick="abrirWhatsApp('Cabello')">Agendar cita</button>
-      </div>
+      <h2>Cabello</h2>
+      <button class="btn" onclick="abrirWhatsApp('Cabello')">Agendar cita</button>
     </div>
 
     <div class="categoria">
-      <img src="imagen/Depilacion Cera.jpeg" alt="Depilacion con Cera">
-      <div class="contenido">
-        <h2>Depilación con Cera</h2>
-        <button class="btn" onclick="abrirWhatsApp('Depilación con Cera')">Agendar cita</button>
-      </div>
+      <h2>Depilación con Cera</h2>
+      <button class="btn" onclick="abrirWhatsApp('Depilación con Cera')">Agendar cita</button>
     </div>
 
     <div class="categoria">
-      <img src="imagen/Depilacion Gillette.jpeg" alt="Depilacion Gillette">
-      <div class="contenido">
-        <h2>Depilación Gillette</h2>
-        <button class="btn" onclick="abrirWhatsApp('Depilación Gillette')">Agendar cita</button>
-      </div>
+      <h2>Depilación Gillette</h2>
+      <button class="btn" onclick="abrirWhatsApp('Depilación Gillette')">Agendar cita</button>
     </div>
 
     <div class="categoria">
-      <img src="imagen/Pestanas.jpeg" alt="Pestañas">
-      <div class="contenido">
-        <h2>Pestañas</h2>
-        <button class="btn" onclick="abrirWhatsApp('Pestañas')">Agendar cita</button>
-      </div>
+      <h2>Pestañas</h2>
+      <button class="btn" onclick="abrirWhatsApp('Pestañas')">Agendar cita</button>
     </div>
 
     <div class="categoria">
-      <img src="imagen/Unas.jpeg" alt="Uñas">
-      <div class="contenido">
-        <h2>Uñas</h2>
-        <button class="btn" onclick="abrirWhatsApp('Uñas')">Agendar cita</button>
-      </div>
+      <h2>Uñas</h2>
+      <button class="btn" onclick="abrirWhatsApp('Uñas')">Agendar cita</button>
     </div>
   </div>
 
@@ -194,3 +162,4 @@
 
 </body>
 </html>
+
