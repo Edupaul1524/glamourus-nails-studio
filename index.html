@@ -69,25 +69,15 @@
     .categoria:hover { transform: scale(1.02); }
     .categoria img {
       width: 100%;
-      height: 170px;
+      height: 200px;
       object-fit: cover;
       display: block;
     }
-    .contenido { padding: 1rem; }
+    .contenido { padding: 1rem; text-align: center; }
     .contenido h2 {
       margin: .2rem 0 .6rem;
       color: var(--rosa);
       font-size: 1.15rem;
-    }
-    .servicios {
-      display: flex;
-      flex-direction: column;
-      gap: .35rem;
-      margin-bottom: .8rem;
-    }
-    .servicio {
-      font-size: .95rem;
-      color: #444;
     }
     button.btn {
       background: var(--rosa);
@@ -107,71 +97,6 @@
       color: #777;
       font-size: .9rem;
     }
-
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.45);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      z-index: 50;
-    }
-    .modal {
-      background: #fff;
-      width: 100%;
-      max-width: 420px;
-      border-radius: 16px;
-      padding: 1rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-    }
-    .modal h3 {
-      margin: .2rem 0 .5rem;
-      color: var(--rosa);
-      font-size: 1.1rem;
-    }
-    .resumen {
-      font-size: .92rem;
-      color: #555;
-      margin: .3rem 0 .8rem;
-    }
-    .campo { margin-bottom: .65rem; }
-    .campo label {
-      display: block;
-      font-size: .85rem;
-      color: #666;
-      margin-bottom: .25rem;
-    }
-    .campo input, .campo select {
-      width: 100%;
-      padding: .55rem .7rem;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: .95rem;
-    }
-    .modal-actions {
-      display: flex;
-      gap: .5rem;
-      margin-top: .6rem;
-    }
-    .btn-sec {
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: .55rem 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    .btn-pri {
-      background: var(--rosa);
-      color: #fff;
-      border: none;
-      padding: .55rem 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      flex: 1;
-    }
-    .btn-pri:hover { background: var(--rosa-osc); }
   </style>
 </head>
 <body>
@@ -191,44 +116,39 @@
       <img src="imagen/Cabello.jpeg" alt="Cabello">
       <div class="contenido">
         <h2>Cabello</h2>
-        <div class="servicios"><div class="servicio">Planchado</div><div class="servicio">Secado</div></div>
-        <button class="btn" onclick="abrirFormulario('Cabello',['Planchado','Secado'])">Agendar cita</button>
+        <button class="btn" onclick="abrirFormulario('Cabello')">Agendar cita</button>
       </div>
     </div>
 
     <div class="categoria">
       <img src="imagen/Depilacion Cera.jpeg" alt="Depilacion con Cera">
       <div class="contenido">
-        <h2>Depilacion con Cera</h2>
-        <div class="servicios"><div class="servicio">Axilas</div><div class="servicio">Bozo</div><div class="servicio">Cejas</div></div>
-        <button class="btn" onclick="abrirFormulario('Depilacion con Cera',['Axilas','Bozo','Cejas'])">Agendar cita</button>
+        <h2>Depilación con Cera</h2>
+        <button class="btn" onclick="abrirFormulario('Depilación con Cera')">Agendar cita</button>
       </div>
     </div>
 
     <div class="categoria">
       <img src="imagen/Depilacion Gillette.jpeg" alt="Depilacion Gillette">
       <div class="contenido">
-        <h2>Depilacion Gillette</h2>
-        <div class="servicios"><div class="servicio">Cejas</div><div class="servicio">Diseño + Sombreado + Depilacion</div></div>
-        <button class="btn" onclick="abrirFormulario('Depilacion Gillette',['Cejas','Diseño + Sombreado + Depilacion'])">Agendar cita</button>
+        <h2>Depilación Gillette</h2>
+        <button class="btn" onclick="abrirFormulario('Depilación Gillette')">Agendar cita</button>
       </div>
     </div>
 
     <div class="categoria">
       <img src="imagen/Pestanas.jpeg" alt="Pestanas">
       <div class="contenido">
-        <h2>Pestanas</h2>
-        <div class="servicios"><div class="servicio">Lifting de Pestanas</div><div class="servicio">Pelo por Pelo</div><div class="servicio">Punto por Punto</div></div>
-        <button class="btn" onclick="abrirFormulario('Pestanas',['Lifting de Pestanas','Pelo por Pelo','Punto por Punto'])">Agendar cita</button>
+        <h2>Pestañas</h2>
+        <button class="btn" onclick="abrirFormulario('Pestañas')">Agendar cita</button>
       </div>
     </div>
 
     <div class="categoria">
       <img src="imagen/Unas.jpeg" alt="Unas">
       <div class="contenido">
-        <h2>Unas</h2>
-        <div class="servicios"><div class="servicio">Unas Esculpidas</div><div class="servicio">Manicure Semipermanente</div></div>
-        <button class="btn" onclick="abrirFormulario('Unas',['Unas Esculpidas','Manicure Semipermanente'])">Agendar cita</button>
+        <h2>Uñas</h2>
+        <button class="btn" onclick="abrirFormulario('Uñas')">Agendar cita</button>
       </div>
     </div>
   </div>
@@ -237,51 +157,11 @@
     📍 Carcelén Alto – Quito | © GLAMOURUS NAILS STUDIO
   </footer>
 
-  <div id="overlay" class="modal-overlay">
-    <div class="modal">
-      <h3>Agendar cita</h3>
-      <div class="resumen" id="resumen"></div>
-      <div class="campo"><label>Tu nombre</label><input id="nombre" type="text" placeholder="Escribe tu nombre"></div>
-      <div class="campo"><label>Servicio</label><select id="servicio"></select></div>
-      <div class="campo"><label>Fecha</label><input id="fecha" type="date"></div>
-      <div class="campo"><label>Hora</label><input id="hora" type="time"></div>
-      <div class="modal-actions">
-        <button class="btn-sec" onclick="cerrarFormulario()">Cancelar</button>
-        <button class="btn-pri" onclick="enviarWhatsApp()">Confirmar y abrir WhatsApp</button>
-      </div>
-    </div>
-  </div>
-
   <script>
     const numeroWhatsApp = "593987356186"; 
-    let selCategoria = "", listaServicios = [];
-    function abrirFormulario(categoria, servicios){
-      selCategoria = categoria;
-      listaServicios = servicios;
-      document.getElementById('resumen').textContent = `Categoría: ${selCategoria}`;
-      const sel = document.getElementById('servicio');
-      sel.innerHTML = "";
-      listaServicios.forEach(s=>{
-        const opt=document.createElement('option');
-        opt.value=s; opt.textContent=s; sel.appendChild(opt);
-      });
-      const hoy=new Date();
-      const yyyy=hoy.getFullYear();
-      const mm=String(hoy.getMonth()+1).padStart(2,'0');
-      const dd=String(hoy.getDate()).padStart(2,'0');
-      document.getElementById('fecha').value=`${yyyy}-${mm}-${dd}`;
-      document.getElementById('overlay').style.display='flex';
-    }
-    function cerrarFormulario(){document.getElementById('overlay').style.display='none';}
-    function enviarWhatsApp(){
-      const n=document.getElementById('nombre').value.trim();
-      const s=document.getElementById('servicio').value;
-      const f=document.getElementById('fecha').value;
-      const h=document.getElementById('hora').value;
-      if(!n||!s||!f||!h){alert("Por favor completa todos los campos.");return;}
-      const msg=`Hola! Soy ${n}. Quiero agendar *${s}* (${selCategoria}) en GLAMOURUS NAILS STUDIO para el ${f} a las ${h}. Gracias!`;
+    function abrirFormulario(categoria){
+      const msg = `Hola! Quiero agendar una cita en *${categoria}* en GLAMOURUS NAILS STUDIO 💅`;
       window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(msg)}`,"_blank");
-      cerrarFormulario();
     }
   </script>
 
