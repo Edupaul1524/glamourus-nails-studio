@@ -96,33 +96,34 @@
       font-size: 0.9rem;
       line-height: 1.4;
     }
-/* SECCIÓN DE SERVICIOS */
-.servicios {
-  text-align: center;
-  padding: 3rem 1rem 1rem;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-  max-width: 900px;
-  margin: 2rem auto;
-  animation: fadeIn 1.2s ease;
-}
 
-.servicios h2 {
-  color: var(--rosa);
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-}
+    /* SECCIÓN DE SERVICIOS */
+    .servicios {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+      max-width: 900px;
+      margin: 2rem auto;
+      animation: fadeIn 1.2s ease;
+    }
 
-.servicios p {
-  color: #666;
-  font-size: 1rem;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.5;
-}
+    .servicios h2 {
+      color: var(--rosa);
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .servicios p {
+      color: #666;
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
 
     /* HEADER */
     header {
@@ -249,7 +250,8 @@
   <!-- SECCIÓN DESTACADA -->
   <section class="destacado">
     <div class="lema">
-      <p id="frase-animada">< ✨</p>
+      <!-- Dejamos vacío, el texto lo pone JS -->
+      <p id="frase-animada"></p>
     </div>
 
     <div class="compromiso">
@@ -279,11 +281,12 @@
       <span>Síguenos en Instagram</span>
     </a>
   </header>
-<!-- SECCIÓN DE SERVICIOS -->
-<section class="servicios">
-  <h2>Nuestros Servicios</h2>
-  <p>Conoce nuestras principales áreas de atención, pensadas para resaltar tu belleza y bienestar 🌸</p>
-</section>
+
+  <!-- SECCIÓN DE SERVICIOS -->
+  <section class="servicios">
+    <h2>Nuestros Servicios</h2>
+    <p>Conoce nuestras principales áreas de atención, pensadas para resaltar tu belleza y bienestar 🌸</p>
+  </section>
 
   <!-- CATEGORÍAS -->
   <div class="catalogo">
@@ -349,27 +352,26 @@
     window.addEventListener('scroll', mostrarCategorias);
     mostrarCategorias();
 
-  // Frases animadas rotatorias
-const frases = [
-  "Belleza con estilo ✨",
-  "Confianza y glamour 💖",
-  "Cuidamos cada detalle 💅",
-  "Tu bienestar, nuestra pasión 🌸"
-];
+    // Frases animadas rotatorias
+    const frases = [
+      "Belleza con estilo ✨",
+      "Confianza y glamour 💖",
+      "Cuidamos cada detalle 💅",
+      "Tu bienestar, nuestra pasión 🌸"
+    ];
 
-let fraseIndex = 0;
-const fraseElement = document.querySelector("#frase-animada");
+    let fraseIndex = 0;
+    const fraseElement = document.querySelector("#frase-animada");
 
-// Mostrar la primera frase de inmediato
-fraseElement.textContent = frases[fraseIndex];
+    // Mostrar la primera frase de inmediato
+    fraseElement.textContent = frases[fraseIndex];
 
-// Cambiar la frase cada 4 segundos
-setInterval(() => {
-  fraseIndex = (fraseIndex + 1) % frases.length;
-  fraseElement.textContent = frases[fraseIndex];
-}, 4000);
+    // Cambiar la frase cada 4 segundos
+    setInterval(() => {
+      fraseIndex = (fraseIndex + 1) % frases.length;
+      fraseElement.textContent = frases[fraseIndex];
+    }, 4000);
   </script>
 
 </body>
 </html>
-
