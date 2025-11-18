@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendar cita - Glamourus Nails Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #ffe6f2, #fff);
+      color: #444;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .contenedor {
+      width: 100%;
+      max-width: 480px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+      padding: 1.8rem 1.6rem 1.8rem;
+    }
+    .titulo {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: #d63384;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .subtitulo {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 1.5rem;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
+      color: #555;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      margin-bottom: 0.85rem;
+      border-radius: 12px;
+      border: 1px solid #e4c5d8;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.7rem 1.2rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+      width: 100%;
+      background: #d63384;
+      color: #fff;
+      margin-top: 0.3rem;
+    }
+    button:hover {
+      background: #b02a6e;
+    }
+    .mensaje {
+      margin-top: 0.7rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .mensaje.ok { color: #28a745; }
+    .mensaje.error { color: #dc3545; }
+    .pie {
+      text-align: center;
+      margin-top: 1.3rem;
+      font-size: 0.8rem;
+      color: #999;
+    }
+    .pie a {
+      color: #d63384;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1 class="titulo">Agendar cita</h1>
+    <p class="subtitulo">
+      Completa tus datos y te contactaremos por WhatsApp para confirmar tu horario 💅
+    </p>
+
+    <form id="form-cita">
+      <label for="nombre">Nombre completo</label>
+      <input id="nombre" type="text" required placeholder="Ej: Ana Pérez" />
+
+      <label for="telefono">WhatsApp</label>
+      <input id="telefono" type="tel" required placeholder="Ej: 0987654321" />
+
+      <label for="servicio">Servicio que deseas</label>
+      <select id="servicio" required>
+        <option value="">Selecciona...</option>
+        <option value="Uñas">Uñas</option>
+        <option value="Pestañas">Pestañas</option>
+        <option value="Cabello">Cabello</option>
+        <option value="Depilación con cera">Depilación con cera</option>
+        <option value="Depilación Gillette">Depilación Gillette</option>
+        <option value="Masajes">Masajes</option>
+        <option value="Otro">Otro</option>
+      </select>
+
+      <label for="fecha">Día que prefieres</label>
+      <input id="fecha" type="date" required />
+
+      <label for="hora">Hora aproximada</label>
+      <input id="hora" type="time" required />
+
+      <label for="comentario">Comentario (opcional)</label>
+      <textarea id="comentario" placeholder="Ej: prefiero en la tarde, tengo uñas acrílicas..."></textarea>
+
+      <button type="submit">Enviar solicitud de cita</button>
+    </form>
+
+    <div id="mensaje-form" class="mensaje"></div>
+
+    <p class="pie">
+      GLAMOURUS NAILS STUDIO ·
+      <a href="https://glamourus-nails-studio.vercel.app/">Volver a la página principal</a>
+    </p>
+  </div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const { createClient } = supabase;
+
+    // Tus datos reales de Supabase
+    const supabaseUrl = "https://katlyfkclruibaxyzqhr.supabase.co";
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImthdGx5ZmtjbHJ1aWJheHl6cWhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0ODEyNTIsImV4cCI6MjA3OTA1NzI1Mn0.vzjjHAfcSysbQkDbScanK08z0tOi8_xNkmEXJFbGs9s";
+
+    const db = createClient(supabaseUrl, supabaseKey);
+    const tabla = "citas";
+
+    const form = document.getElementById("form-cita");
+    const mensajeForm = document.getElementById("mensaje-form");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      mensajeForm.textContent = "";
+      mensajeForm.className = "mensaje";
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const telefono = document.getElementById("telefono").value.trim();
+      const servicio = document.getElementById("servicio").value;
+      const fecha = document.getElementById("fecha").value;
+      const hora = document.getElementById("hora").value;
+      const comentario = document.getElementById("comentario").value.trim();
+
+      if (!nombre || !telefono || !servicio || !fecha || !hora) {
+        mensajeForm.textContent = "Por favor, completa todos los campos obligatorios.";
+        mensajeForm.className = "mensaje error";
+        return;
+      }
+
+      const { error } = await db
+        .from(tabla)
+        .insert({
+          nombre,
+          telefono,
+          servicio,
+          fecha,
+          hora,
+          comentario,
+        });
+
+      if (error) {
+        console.error(error);
+        mensajeForm.textContent = "Ocurrió un error al enviar tu solicitud. Inténtalo nuevamente.";
+        mensajeForm.className = "mensaje error";
+      } else {
+        mensajeForm.textContent = "¡Gracias! 💖 Hemos recibido tu solicitud. Te escribiremos por WhatsApp para confirmar tu cita.";
+        mensajeForm.className = "mensaje ok";
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
