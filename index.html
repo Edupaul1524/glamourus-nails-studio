@@ -249,7 +249,7 @@
   <!-- SECCIÓN DESTACADA -->
   <section class="destacado">
     <div class="lema">
-      <p id="frase-animada">Belleza con estilo ✨</p>
+      <p id="frase-animada">< ✨</p>
     </div>
 
     <div class="compromiso">
@@ -349,19 +349,25 @@
     window.addEventListener('scroll', mostrarCategorias);
     mostrarCategorias();
 
-    // Frases animadas rotatorias
-    const frases = [
-      "Belleza con estilo ✨",
-      "Confianza y glamour 💖",
-      "Cuidamos cada detalle 💅",
-      "Tu bienestar, nuestra pasión 🌸"
-    ];
-    let fraseIndex = 0;
-    const fraseElement = document.getElementById("frase-animada");
-    setInterval(() => {
-      fraseIndex = (fraseIndex + 1) % frases.length;
-      fraseElement.textContent = frases[fraseIndex];
-    }, 4000);
+  // Frases animadas rotatorias
+const frases = [
+  "Belleza con estilo ✨",
+  "Confianza y glamour 💖",
+  "Cuidamos cada detalle 💅",
+  "Tu bienestar, nuestra pasión 🌸"
+];
+
+let fraseIndex = 0;
+const fraseElement = document.querySelector("#frase-animada");
+
+// Mostrar la primera frase de inmediato
+fraseElement.textContent = frases[fraseIndex];
+
+// Cambiar la frase cada 4 segundos
+setInterval(() => {
+  fraseIndex = (fraseIndex + 1) % frases.length;
+  fraseElement.textContent = frases[fraseIndex];
+}, 4000);
   </script>
 
 </body>
