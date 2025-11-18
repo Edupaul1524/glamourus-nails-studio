@@ -146,11 +146,21 @@
     const supabaseUrl = "https://katlyfkclruibaxyzqhr.supabase.co";
     const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImthdGx5ZmtjbHJ1aWJheHl6cWhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0ODEyNTIsImV4cCI6MjA3OTA1NzI1Mn0.vzjjHAfcSysbQkDbScanK08z0tOi8_xNkmEXJFbGs9s";
 
-    const db = createClient(supabaseUrl, supabaseKey);
-    const tabla = "citas";
+const db = createClient(supabaseUrl, supabaseKey);
+const tabla = "citas";
 
-    const form = document.getElementById("form-cita");
-    const mensajeForm = document.getElementById("mensaje-form");
+const form = document.getElementById("form-cita");
+const mensajeForm = document.getElementById("mensaje-form");
+const selectServicio = document.getElementById("servicio");
+
+// 🔥 Leer servicio desde la URL y preseleccionar
+const params = new URLSearchParams(window.location.search);
+const servicioURL = params.get("servicio");
+if (servicioURL) {
+  // Intentar hacer match exacto con las opciones del select
+  selectServicio.value = servicioURL;
+}
+
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
