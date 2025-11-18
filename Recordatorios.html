@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recordatorios - Glamourus Nails Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff5fb;
+      color: #444;
+      padding: 1.5rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #d63384;
+    }
+    .subtitulo {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .contenedor {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .contenedor {
+        grid-template-columns: 1fr;
+      }
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.06);
+      padding: 1.5rem;
+    }
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #d63384;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
+      color: #555;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.5rem 0.7rem;
+      margin-bottom: 0.8rem;
+      border-radius: 10px;
+      border: 1px solid #e4c5d8;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.2rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .btn-guardar {
+      background: #d63384;
+      color: #fff;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    .btn-guardar:hover {
+      background: #b02a6e;
+    }
+    .lista {
+      max-height: 420px;
+      overflow-y: auto;
+    }
+    .item {
+      border: 1px solid #f1d3e3;
+      border-radius: 14px;
+      padding: 0.8rem;
+      margin-bottom: 0.7rem;
+      background: #fff;
+      font-size: 0.85rem;
+    }
+    .item strong {
+      color: #d63384;
+    }
+    .fila-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.3rem;
+    }
+    .fecha {
+      font-size: 0.8rem;
+      color: #777;
+    }
+    .chips {
+      font-size: 0.75rem;
+      margin-bottom: 0.4rem;
+    }
+    .chip-servicio {
+      display: inline-block;
+      background: #ffe6f6;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      margin-right: 0.3rem;
+      color: #b02a6e;
+    }
+    .estado {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+    }
+    .estado-pendiente {
+      background: #fff3cd;
+      color: #856404;
+    }
+    .estado-enviado {
+      background: #d4edda;
+      color: #155724;
+    }
+    .acciones {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+    .btn-wa {
+      background: #25d366;
+      color: #fff;
+      flex: 1;
+    }
+    .btn-ok {
+      background: #e2e3e5;
+      color: #333;
+      flex: 1;
+    }
+    .info {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 0.4rem;
+      text-align: center;
+    }
+    .mensaje {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .mensaje.ok { color: #28a745; }
+    .mensaje.error { color: #dc3545; }
+  </style>
+</head>
+<body>
+
+  <h1>Recordatorios Glamourus 💅</h1>
+  <p class="subtitulo">Solo para uso interno de tus manicuristas (no mostrar a las clientas).</p>
+
+  <div class="contenedor">
+    <!-- FORMULARIO PARA GUARDAR RECORDATORIO -->
+    <div class="card">
+      <h2>Registrar próxima visita</h2>
+      <form id="form-recordatorio">
+        <label for="nombre">Nombre de la clienta</label>
+        <input id="nombre" type="text" required placeholder="Ej: Karla" />
+
+        <label for="telefono">WhatsApp de la clienta</label>
+        <input id="telefono" type="tel" required placeholder="Ej: 0987654321" />
+
+        <label for="servicio">Servicio realizado</label>
+        <select id="servicio" required>
+          <option value="">Selecciona...</option>
+          <option value="Uñas">Uñas</option>
+          <option value="Pestañas">Pestañas</option>
+          <option value="Cabello">Cabello</option>
+          <option value="Depilación con cera">Depilación con cera</option>
+          <option value="Depilación Gillette">Depilación Gillette</option>
+          <option value="Masajes">Masajes</option>
+          <option value="Otro">Otro</option>
+        </select>
+
+        <label for="fecha">Fecha para recordar</label>
+        <input id="fecha" type="date" required />
+
+        <button type="submit" class="btn-guardar">Guardar recordatorio</button>
+      </form>
+      <div id="mensaje-form" class="mensaje"></div>
+      <p class="info">Sugerencia: para mantenimiento de uñas, usa 15 días después del servicio.</p>
+    </div>
+
+    <!-- LISTA DE RECORDATORIOS -->
+    <div class="card">
+      <h2>Recordatorios de hoy y próximos días</h2>
+      <p class="info">Aquí verán a quién deben escribir por WhatsApp 📲</p>
+      <div id="lista-recordatorios" class="lista"></div>
+      <div id="mensaje-lista" class="mensaje"></div>
+    </div>
+  </div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // 🔐 1. CONFIGURAR SUPABASE
+    const { createClient } = supabase;
+
+    const supabaseUrl = "https://katlyfkclruibaxyzqhr.supabase.co";
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImthdGx5ZmtjbHJ1aWJheHl6cWhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0ODEyNTIsImV4cCI6MjA3OTA1NzI1Mn0.vzjjHAfcSysbQkDbScanK08z0tOi8_xNkmEXJFbGs9s";
+
+    const db = createClient(supabaseUrl, supabaseKey);
+    const tabla = "recordatorios";
+
+    // 2. ELEMENTOS DEL DOM
+    const form = document.getElementById("form-recordatorio");
+    const mensajeForm = document.getElementById("mensaje-form");
+    const lista = document.getElementById("lista-recordatorios");
+    const mensajeLista = document.getElementById("mensaje-lista");
+
+    // 3. GUARDAR RECORDATORIO NUEVO
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      mensajeForm.textContent = "";
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const telefono = document.getElementById("telefono").value.trim();
+      const servicio = document.getElementById("servicio").value;
+      const fecha = document.getElementById("fecha").value;
+
+      if (!nombre || !telefono || !servicio || !fecha) {
+        mensajeForm.textContent = "Completa todos los campos.";
+        mensajeForm.className = "mensaje error";
+        return;
+      }
+
+      const { error } = await db
+        .from(tabla)
+        .insert({
+          nombre,
+          telefono,
+          servicio,
+          fecha_recordar: fecha,
+          enviado: false,
+        });
+
+      if (error) {
+        console.error(error);
+        mensajeForm.textContent = "Error al guardar. Revisa la configuración.";
+        mensajeForm.className = "mensaje error";
+      } else {
+        mensajeForm.textContent = "Recordatorio guardado correctamente ✔";
+        mensajeForm.className = "mensaje ok";
+        form.reset();
+        cargarRecordatorios();
+      }
+    });
+
+    // 4. CARGAR RECORDATORIOS (HOY Y PRÓXIMOS 7 DÍAS)
+    function formatoFechaISO(d) {
+      const año = d.getFullYear();
+      const mes = String(d.getMonth() + 1).padStart(2, "0");
+      const dia = String(d.getDate()).padStart(2, "0");
+      return `${año}-${mes}-${dia}`;
+    }
+
+    async function cargarRecordatorios() {
+      lista.innerHTML = "";
+      mensajeLista.textContent = "Cargando...";
+
+      const hoy = new Date();
+      const en7 = new Date();
+      en7.setDate(hoy.getDate() + 7);
+
+      const desde = formatoFechaISO(hoy);
+      const hasta = formatoFechaISO(en7);
+
+      const { data, error } = await db
+        .from(tabla)
+        .select("*")
+        .gte("fecha_recordar", desde)
+        .lte("fecha_recordar", hasta)
+        .order("fecha_recordar", { ascending: true });
+
+      if (error) {
+        console.error(error);
+        mensajeLista.textContent = "Error al cargar recordatorios.";
+        mensajeLista.className = "mensaje error";
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        mensajeLista.textContent = "No hay recordatorios para hoy ni próximos días.";
+        mensajeLista.className = "mensaje";
+        return;
+      }
+
+      mensajeLista.textContent = "";
+      data.forEach((item) => {
+        const div = document.createElement("div");
+        div.className = "item";
+
+        const estadoClass = item.enviado ? "estado-enviado" : "estado-pendiente";
+        const estadoText = item.enviado ? "Recordatorio enviado" : "Pendiente";
+
+        div.innerHTML = `
+          <div class="fila-top">
+            <strong>${item.nombre}</strong>
+            <span class="fecha">${item.fecha_recordar}</span>
+          </div>
+          <div class="chips">
+            <span class="chip-servicio">${item.servicio}</span>
+            <span class="estado ${estadoClass}">${estadoText}</span>
+          </div>
+          <div>📱 ${item.telefono}</div>
+        `;
+
+        const acciones = document.createElement("div");
+        acciones.className = "acciones";
+
+        const btnWa = document.createElement("button");
+        btnWa.className = "btn-wa";
+        btnWa.textContent = "Enviar WhatsApp";
+        btnWa.addEventListener("click", () => {
+          abrirWhatsApp(item);
+        });
+
+        const btnOk = document.createElement("button");
+        btnOk.className = "btn-ok";
+        btnOk.textContent = "Marcar enviado";
+        btnOk.addEventListener("click", () => {
+          marcarEnviado(item.id);
+        });
+
+        acciones.appendChild(btnWa);
+        acciones.appendChild(btnOk);
+        div.appendChild(acciones);
+
+        lista.appendChild(div);
+      });
+    }
+
+    // 5. ABRIR WHATSAPP
+    function abrirWhatsApp(item) {
+      let numero = item.telefono.replace(/\s+/g, "");
+
+      if (numero.startsWith("0")) {
+        numero = "593" + numero.slice(1);
+      } else if (!numero.startsWith("593")) {
+        numero = "593" + numero;
+      }
+
+      const mensaje =
+`Hola ${item.nombre} 💖, te recordamos tu mantenimiento de ${item.servicio} en GLAMOURUS NAILS STUDIO para hoy (${item.fecha_recordar}). ¿Te gustaría agendar tu cita? 💅`;
+
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    }
+
+    // 6. MARCAR COMO ENVIADO
+    async function marcarEnviado(id) {
+      const { error } = await db
+        .from(tabla)
+        .update({ enviado: true })
+        .eq("id", id);
+
+      if (error) {
+        alert("Error al marcar como enviado.");
+      } else {
+        cargarRecordatorios();
+      }
+    }
+
+    // Cargar al inicio
+    cargarRecordatorios();
+  </script>
+</body>
+</html>
