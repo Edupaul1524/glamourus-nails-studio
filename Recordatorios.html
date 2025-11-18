@@ -376,16 +376,16 @@
     }
 
     // 5. ABRIR WHATSAPP
-    function abrirWhatsApp(item) {
-      let numero = item.telefono.replace(/\s+/g, "");
+    async function abrirWhatsApp(item) {
+  let numero = item.telefono.replace(/\s+/g, "");
 
-      if (numero.startsWith("0")) {
-        numero = "593" + numero.slice(1);
-      } else if (!numero.startsWith("593")) {
-        numero = "593" + numero;
-      }
+  if (numero.startsWith("0")) {
+    numero = "593" + numero.slice(1);
+  } else if (!numero.startsWith("593")) {
+    numero = "593" + numero;
+  }
 
-      const mensaje =
+  const mensaje =
 `Hola ${item.nombre} 💖, te recordamos tu mantenimiento de ${item.servicio} en GLAMOURUS NAILS STUDIO para hoy (${item.fecha_recordar}).
 
 Para agendar tu cita en el horario que más te convenga, entra aquí:
@@ -393,9 +393,17 @@ https://glamourus-nails-studio.vercel.app/agendar.html
 
 ¡Te esperamos! 💅`;
 
-      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, "_blank");
-    }
+  // 🔥 ABRIR WHATSAPP
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+
+  // 🔥 MARCAR AUTOMÁTICAMENTE COMO ENVIADO
+  await db.from(tabla).update({ enviado: true }).eq("id", item.id);
+
+  // 🔄 RECARGAR LISTA
+  cargarRecordatorios();
+}
+
 
     // 6. MARCAR COMO ENVIADO
     async function marcarEnviado(id) {
