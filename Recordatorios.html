@@ -307,12 +307,14 @@
       const desde = formatoFechaISO(hoy);
       const hasta = formatoFechaISO(en7);
 
-      const { data, error } = await db
-        .from(tabla)
-        .select("*")
-        .gte("fecha_recordar", desde)
-        .lte("fecha_recordar", hasta)
-        .order("fecha_recordar", { ascending: true });
+ const { data, error } = await db
+  .from(tabla)
+  .select("*")
+  .gte("fecha_recordar", desde)
+  .lte("fecha_recordar", hasta)
+  .eq("enviado", false)                // SOLO pendientes
+  .order("fecha_recordar", { ascending: true });
+
 
       if (error) {
         console.error(error);
