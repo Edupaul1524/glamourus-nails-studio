@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control de Citas - Glamourus Nails Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff5fb;
+      padding: 1.5rem;
+      color: #444;
+    }
+    h1 {
+      text-align: center;
+      color: #d63384;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    .filtro {
+      max-width: 400px;
+      margin: 0 auto 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    label {
+      font-size: .85rem;
+      color: #555;
+    }
+    input {
+      padding: .5rem;
+      border-radius: 10px;
+      border: 1px solid #e4c5d8;
+    }
+    .lista {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .cita {
+      background: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.05);
+      border-left: 6px solid #ffd9ec;
+    }
+    .confirmada {
+      border-left-color: #b3f5c9;
+      background: #f5fff8;
+    }
+    .fila {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: .3rem;
+    }
+    button {
+      border: none;
+      padding: .5rem .9rem;
+      border-radius: 10px;
+      font-size: .85rem;
+      cursor: pointer;
+    }
+    .btn-wa { background: #25d366; color: #fff; }
+    .btn-ok { background: #ffe6f2; color: #d63384; }
+    .btn-ok:hover { background: #ffd6ea; }
+    .no-resultados {
+      text-align: center;
+      color: #999;
+      font-size: .9rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Control de Citas 💅</h1>
+
+<div class="filtro">
+  <label for="fechaFiltro">Filtrar por fecha:</label>
+  <input type="date" id="fechaFiltro" />
+</div>
+
+<div id="lista" class="lista"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const { createClient } = supabase;
+
+  const supabaseUrl = "https://katlyfkclruibaxyzqhr.supabase.co";
+  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImthdGx5ZmtjbHJ1aWJheHl6cWhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0ODEyNTIsImV4cCI6MjA3OTA1NzI1Mn0.vzjjHAfcSysbQkDbScanK08z0tOi8_xNkmEXJFbGs9s";
+
+  const db = createClient(supabaseUrl, supabaseKey);
+  const tabla = "citas";
+
+  async function cargarCitas(fechaFiltro = null) {
+    let query = db.from(tabla).select("*").order("fecha", { ascending: true }).order("hora", { ascending: true });
+
+    if (fechaFiltro) query = query.eq("fecha", fechaFiltro);
+
+    const { data, error } = await query;
+
+    const lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    if (error) {
+      lista.innerHTML = `<p class="no-resultados">Error al cargar citas.</p>`;
+      return;
+    }
+
+    if (data.length === 0) {
+      lista.innerHTML = `<p class="no-resultados">No hay citas para esta fecha.</p>`;
+      return;
+    }
+
+    data.forEach(cita => {
+      const div = document.createElement("div");
+      div.className = "cita";
+      if (cita.confirmada) div.classList.add("confirmada");
+
+      div.innerHTML = `
+        <div class="fila"><strong>${cita.nombre}</strong><span>${cita.fecha}</span></div>
+        <div class="fila"><span>${cita.servicio}</span><span>${cita.hora}</span></div>
+        <div>📱 ${cita.telefono}</div>
+        <div style="margin: .4rem 0; font-size: .85rem;">${cita.comentario || ""}</div>
+      `;
+
+      const btns = document.createElement("div");
+      btns.style.display = "flex";
+      btns.style.gap = ".5rem";
+      btns.style.marginTop = ".5rem";
+
+      const btnWA = document.createElement("button");
+      btnWA.className = "btn-wa";
+      btnWA.textContent = "WhatsApp";
+      btnWA.onclick = () => enviarWA(cita);
+
+      const btnOk = document.createElement("button");
+      btnOk.className = "btn-ok";
+      btnOk.textContent = cita.confirmada ? "Confirmada" : "Marcar confirmada";
+      btnOk.onclick = () => marcarConfirmada(cita.id);
+
+      btns.appendChild(btnWA);
+      btns.appendChild(btnOk);
+      div.appendChild(btns);
+
+      lista.appendChild(div);
+    });
+  }
+
+  function enviarWA(cita) {
+    let numero = cita.telefono.replace(/\s+/g, "");
+    if (numero.startsWith("0")) numero = "593" + numero.slice(1);
+    else if (!numero.startsWith("593")) numero = "593" + numero;
+
+    const mensaje = 
+`Hola ${cita.nombre} 💖
+Sobre tu cita de ${cita.servicio} para el día ${cita.fecha} a las ${cita.hora}.
+¿Deseas confirmar algún detalle adicional?`;
+
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, "_blank");
+  }
+
+  async function marcarConfirmada(id) {
+    await db.from(tabla).update({ confirmada: true }).eq("id", id);
+    cargarCitas(document.getElementById("fechaFiltro").value);
+  }
+
+  document.getElementById("fechaFiltro").addEventListener("change", e => {
+    cargarCitas(e.target.value);
+  });
+
+  cargarCitas();
+</script>
+
+</body>
+</html>
