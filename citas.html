@@ -76,7 +76,7 @@
 </head>
 <body>
 
-<h1>Control de Citas 💅</h1>
+< 💅</h1>
 
 <div class="filtro">
   <label for="fechaFiltro">Filtrar por fecha:</label>
@@ -175,5 +175,17 @@ Sobre tu cita de ${cita.servicio} para el día ${cita.fecha} a las ${cita.hora}.
   cargarCitas();
 </script>
 
-</body>
+<body>
+
+<!-- BLOQUE DE CONTRASEÑA -->
+<script>
+  const clave = "Glamour2025"; // misma clave que recordatorios
+  const ingreso = prompt("Acceso restringido. Ingresa la contraseña:");
+
+  if (ingreso !== clave) {
+    alert("Contraseña incorrecta. Acceso denegado.");
+    window.location.href = "index.html";
+  }
+</script>
+
 </html>
