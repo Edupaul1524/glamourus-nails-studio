@@ -349,27 +349,22 @@
           </div>
           <div>📱 ${item.telefono}</div>
         `;
+        
+      const acciones = document.createElement("div");
+      acciones.className = "acciones";
 
-        const acciones = document.createElement("div");
-        acciones.className = "acciones";
+      const btnWa = document.createElement("button");
+      btnWa.className = "btn-wa";
+      btnWa.textContent = "Enviar WhatsApp";
+      btnWa.addEventListener("click", () => {
+        abrirWhatsApp(item);
+      });
 
-        const btnWa = document.createElement("button");
-        btnWa.className = "btn-wa";
-        btnWa.textContent = "Enviar WhatsApp";
-        btnWa.addEventListener("click", () => {
-          abrirWhatsApp(item);
-        });
+      // Solo botón de WhatsApp; ya se marca como enviado automáticamente
+      acciones.appendChild(btnWa);
+      div.appendChild(acciones);
 
-        const btnOk = document.createElement("button");
-        btnOk.className = "btn-ok";
-        btnOk.textContent = "Marcar enviado";
-        btnOk.addEventListener("click", () => {
-          marcarEnviado(item.id);
-        });
-
-        acciones.appendChild(btnWa);
-        acciones.appendChild(btnOk);
-        div.appendChild(acciones);
+      
 
         lista.appendChild(div);
       });
