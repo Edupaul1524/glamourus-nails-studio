@@ -346,6 +346,11 @@
     📅 Control de citas (solo administración)
   </a>
 </div>
+  
+<!-- CONTADOR DE VISITAS -->
+<div style="margin-top: 1rem; text-align:center; font-weight:600; color:#d63384;">
+  👁‍🗨 Visitas a la página: <span id="counter">Cargando...</span>
+</div>
 
 <footer>
   © 2025 GLAMOURUS NAILS STUDIO | Diseñado con 💖 en Quito
@@ -402,7 +407,14 @@
       fraseIndex = (fraseIndex + 1) % frases.length;
       fraseElement.textContent = frases[fraseIndex];
     }, 4000);
-  </script>
+      </script>
+<script>
+  fetch("https://api.countapi.xyz/hit/glamourus-nails-studio/visitas")
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById("counter").textContent = d.value;
+    });
+</script>
 
 </body>
 </html>
