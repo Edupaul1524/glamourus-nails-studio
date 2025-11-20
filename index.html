@@ -317,45 +317,44 @@
     <p>📞 WhatsApp: <a href="https://wa.me/593987356186" target="_blank">0987356186</a></p>
   </section>
   
- <!-- ACCESO PARA MANICURISTAS -->
-<div style="text-align:center; margin: 2rem 0 1rem 0;">
-  <a href="Recordatorios.html" 
-     style="display:inline-block;
-            padding: 0.8rem 1.4rem;
-            background:#d63384;
-            color:white;
-            border-radius:12px;
-            text-decoration:none;
-            font-weight:600;
-            font-size:0.95rem;">
-    📋 Ingresar recordatorios (solo manicuristas)
-  </a>
-</div>
+  <!-- ACCESO PARA MANICURISTAS -->
+  <div style="text-align:center; margin: 2rem 0 1rem 0;">
+    <a href="Recordatorios.html" 
+       style="display:inline-block;
+              padding: 0.8rem 1.4rem;
+              background:#d63384;
+              color:white;
+              border-radius:12px;
+              text-decoration:none;
+              font-weight:600;
+              font-size:0.95rem;">
+      📋 Ingresar recordatorios (solo manicuristas)
+    </a>
+  </div>
 
-<!-- ACCESO PARA CONTROL DE CITAS (SOLO ADMINISTRACIÓN) -->
-<div style="text-align:center; margin-bottom: 2rem;">
-  <a href="citas.html"
-     style="display:inline-block;
-            padding: 0.6rem 1.2rem;
-            background:#555;
-            color:white;
-            border-radius:10px;
-            text-decoration:none;
-            font-weight:600;
-            font-size:0.9rem;">
-    📅 Control de citas (solo administración)
-  </a>
-</div>
-  
-<!-- CONTADOR DE VISITAS -->
-<div style="margin-top: 1rem; text-align:center; font-weight:600; color:#d63384;">
-  👁‍🗨 Visitas a la página: <span id="counter">Cargando...</span>
-</div>
+  <!-- ACCESO PARA CONTROL DE CITAS (SOLO ADMINISTRACIÓN) -->
+  <div style="text-align:center; margin-bottom: 2rem;">
+    <a href="citas.html"
+       style="display:inline-block;
+              padding: 0.6rem 1.2rem;
+              background:#555;
+              color:white;
+              border-radius:10px;
+              text-decoration:none;
+              font-weight:600;
+              font-size:0.9rem;">
+      📅 Control de citas (solo administración)
+    </a>
+  </div>
 
-<footer>
-  © 2025 GLAMOURUS NAILS STUDIO | Diseñado con 💖 en Quito
-</footer>
+  <footer>
+    © 2025 GLAMOURUS NAILS STUDIO | Diseñado con 💖 en Quito
 
+    <!-- CONTADOR DE VISITAS (DISCRETO) -->
+    <small style="display:block; margin-top:0.4rem; font-size:0.75rem; color:#999;">
+      👁‍🗨 Visitas a la página: <span id="visit-counter">cargando...</span>
+    </small>
+  </footer>
 
   <a href="https://wa.me/593987356186?text=Hola!%20Quiero%20una%20cita%20en%20GLAMOURUS%20NAILS%20STUDIO%20💅"
      class="whatsapp-float" target="_blank" rel="noopener">
@@ -363,7 +362,7 @@
   </a>
 
   <script>
-    // WhatsApp directo
+    // WhatsApp directo (ya no se usa en categorías, pero lo dejamos por si lo necesitas luego)
     function abrirWhatsApp(categoria){
       const numeroWhatsApp = "593987356186";
       const mensaje = `Hola! Quiero agendar una cita en *${categoria}* en GLAMOURUS NAILS STUDIO 💅`;
@@ -407,15 +406,24 @@
       fraseIndex = (fraseIndex + 1) % frases.length;
       fraseElement.textContent = frases[fraseIndex];
     }, 4000);
-      </script>
-<script>
-  fetch("https://api.countapi.xyz/hit/glamourus-nails-studio/visitas")
-    .then(r => r.json())
-    .then(d => {
-      document.getElementById("counter").textContent = d.value;
+  </script>
+
+  <!-- CONTADOR DE VISITAS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const counterEl = document.getElementById("visit-counter");
+      if (!counterEl) return;
+
+      fetch("https://api.countapi.xyz/hit/glamourus-nails-studio/visitas")
+        .then(r => r.json())
+        .then(d => {
+          counterEl.textContent = d.value.toLocaleString("es-EC");
+        })
+        .catch(() => {
+          counterEl.textContent = "—";
+        });
     });
-</script>
+  </script>
 
 </body>
 </html>
-
