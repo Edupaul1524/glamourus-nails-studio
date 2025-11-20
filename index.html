@@ -371,41 +371,93 @@
       color: #777;
       margin-bottom: 1rem;
     }
-    .lista-unas {
+       .lista-unas {
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
+      gap: 0.9rem;
     }
+
+    .grupo-unas {
+      border-radius: 16px;
+      background: #fff9fc;
+      border: 1px solid #f3c8df;
+      padding: 0.5rem 0.7rem 0.7rem;
+    }
+
+    .grupo-titulo {
+      width: 100%;
+      background: transparent;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--rosa);
+      padding: 0.3rem 0.2rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .grupo-titulo span.icon-seccion {
+      margin-right: 0.35rem;
+    }
+
+    .grupo-titulo span.flechita {
+      font-size: 0.9rem;
+      color: #d63384;
+      transition: transform 0.2s;
+    }
+
+    .grupo-titulo.abierto span.flechita {
+      transform: rotate(90deg);
+    }
+
+    .grupo-body {
+      margin-top: 0.4rem;
+      display: none; /* se abre con JS */
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
     .btn-servicio-unas {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
-      padding: 0.55rem 0.8rem;
-      border-radius: 14px;
-      border: 1px solid #f3c8df;
-      background: #fff9fc;
+      padding: 0.45rem 0.75rem;
+      border-radius: 12px;
+      border: 1px solid #f5d0e5;
+      background: #ffffff;
       color: #444;
-      font-size: 0.86rem;
+      font-size: 0.82rem;
       cursor: pointer;
       transition: 0.18s ease;
       font-weight: 500;
     }
+
     .btn-servicio-unas span.iconito {
-      font-size: 1rem;
+      font-size: 0.95rem;
       margin-right: 0.25rem;
     }
-    .btn-servicio-unas span.texto { flex: 1; }
+
+    .btn-servicio-unas span.texto {
+      flex: 1;
+      text-align: left;
+    }
+
     .btn-servicio-unas span.flecha {
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: #d63384;
     }
+
     .btn-servicio-unas:hover {
       background: #ffe6f2;
       border-color: var(--rosa);
       transform: translateY(-1px);
       box-shadow: 0 3px 8px rgba(0,0,0,0.06);
     }
+
 
     /* CHATBOT GLAMOURUS */
     .chatbot-bubble {
@@ -562,123 +614,163 @@
       <p class="modal-subtitle">
         Elige el servicio que deseas y en el siguiente paso agendaremos tu cita 💅
       </p>
-
       <div class="lista-unas">
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('ARREGLO DE UNA UÑA')">
-          <span class="iconito">💅</span><span class="texto">ARREGLO DE UNA UÑA</span><span class="flecha">➜</span>
-        </button>
 
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('BABY BOOMER CON ACRILICO UNA UÑA')">
-          <span class="iconito">💅</span><span class="texto">BABY BOOMER CON ACRILICO UNA UÑA</span><span class="flecha">➜</span>
-        </button>
+        <!-- MANICURE -->
+        <div class="grupo-unas">
+          <button class="grupo-titulo" onclick="toggleGrupo(this)">
+            <span><span class="icon-seccion">💅</span>Manicure</span>
+            <span class="flechita">▸</span>
+          </button>
+          <div class="grupo-body">
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE EXPRESS LIMPIEZA O PINTURA')">
+              <span class="iconito">✨</span><span class="texto">MANICURE EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE HOMBRE')">
+              <span class="iconito">✨</span><span class="texto">MANICURE HOMBRE</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL')">
+              <span class="iconito">✨</span><span class="texto">MANICURE NORMAL</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE PERMANENTE')">
+              <span class="iconito">✨</span><span class="texto">MANICURE PERMANENTE</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
 
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('BAÑO DE ACRILICO PERMANENTE')">
-          <span class="iconito">💅</span><span class="texto">BAÑO DE ACRILICO PERMANENTE</span><span class="flecha">➜</span>
-        </button>
+        <!-- MANICURE + PEDICURE -->
+        <div class="grupo-unas">
+          <button class="grupo-titulo" onclick="toggleGrupo(this)">
+            <span><span class="icon-seccion">💅</span>Manicure + Pedicure</span>
+            <span class="flechita">▸</span>
+          </button>
+          <div class="grupo-body">
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL + PEDICURE NORMAL')">
+              <span class="iconito">🦶</span><span class="texto">MANICURE NORMAL + PEDICURE NORMAL</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL + PEDICURE PERMANENTE')">
+              <span class="iconito">🦶</span><span class="texto">MANICURE NORMAL + PEDICURE PERMANENTE</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE PERMANENTE + PEDICURE NORMAL')">
+              <span class="iconito">🦶</span><span class="texto">MANICURE PERMANENTE + PEDICURE NORMAL</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
 
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('BAÑO DE ACRILICO TRADICIONAL')">
-          <span class="iconito">💅</span><span class="texto">BAÑO DE ACRILICO TRADICIONAL</span><span class="flecha">➜</span>
-        </button>
+        <!-- PEDICURE -->
+        <div class="grupo-unas">
+          <button class="grupo-titulo" onclick="toggleGrupo(this)">
+            <span><span class="icon-seccion">🦶</span>Pedicure</span>
+            <span class="flechita">▸</span>
+          </button>
+          <div class="grupo-body">
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE  EXPRESS LIMPIEZA O PINTURA')">
+              <span class="iconito">🦶</span><span class="texto">PEDICURE  EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE HOMBRE')">
+              <span class="iconito">🦶</span><span class="texto">PEDICURE HOMBRE</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE NORMAL')">
+              <span class="iconito">🦶</span><span class="texto">PEDICURE NORMAL</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE PERMANENTE')">
+              <span class="iconito">🦶</span><span class="texto">PEDICURE PERMANENTE</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
 
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('ENCAPSULADO DE UNA UÑA')">
-          <span class="iconito">💅</span><span class="texto">ENCAPSULADO DE UNA UÑA</span><span class="flecha">➜</span>
-        </button>
+        <!-- UÑAS ACRÍLICAS -->
+        <div class="grupo-unas">
+          <button class="grupo-titulo" onclick="toggleGrupo(this)">
+            <span><span class="icon-seccion">💎</span>Uñas acrílicas</span>
+            <span class="flechita">▸</span>
+          </button>
+          <div class="grupo-body">
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS BABY BOOMER')">
+              <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS BABY BOOMER</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS COVER')">
+              <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS COVER</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS  NORMAL')">
+              <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS  NORMAL</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS  PERMANENTE')">
+              <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS  PERMANENTE</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
 
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE EXPRESS LIMPIEZA O PINTURA')">
-          <span class="iconito">💅</span><span class="texto">MANICURE EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
-        </button>
+        <!-- UÑAS ESCULPIDAS -->
+        <div class="grupo-unas">
+          <button class="grupo-titulo" onclick="toggleGrupo(this)">
+            <span><span class="icon-seccion">🎨</span>Uñas esculpidas</span>
+            <span class="flechita">▸</span>
+          </button>
+          <div class="grupo-body">
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS BABY BOOMER')">
+              <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS BABY BOOMER</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS COVER')">
+              <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS COVER</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS  NORMAL')">
+              <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS  NORMAL</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS PERMANENTE')">
+              <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS PERMANENTE</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
 
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE HOMBRE')">
-          <span class="iconito">💅</span><span class="texto">MANICURE HOMBRE</span><span class="flecha">➜</span>
-        </button>
+        <!-- RELLENOS Y RETIROS -->
+        <div class="grupo-unas">
+          <button class="grupo-titulo" onclick="toggleGrupo(this)">
+            <span><span class="icon-seccion">🔁</span>Rellenos y retiros</span>
+            <span class="flechita">▸</span>
+          </button>
+          <div class="grupo-body">
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('RELLENO DE ACRILICO CON ESMALTE PERMANENTE')">
+              <span class="iconito">🔁</span><span class="texto">RELLENO DE ACRILICO CON ESMALTE PERMANENTE</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('RELLENO DE UÑAS')">
+              <span class="iconito">🔁</span><span class="texto">RELLENO DE UÑAS</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('RETIRO DE ACRILICO')">
+              <span class="iconito">🗑</span><span class="texto">RETIRO DE ACRILICO</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('RETIRO DE ESMALTE PERMANENTE')">
+              <span class="iconito">🗑</span><span class="texto">RETIRO DE ESMALTE PERMANENTE</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
 
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL')">
-          <span class="iconito">💅</span><span class="texto">MANICURE NORMAL</span><span class="flecha">➜</span>
-        </button>
+        <!-- SERVICIOS POR UNA UÑA -->
+        <div class="grupo-unas">
+          <button class="grupo-titulo" onclick="toggleGrupo(this)">
+            <span><span class="icon-seccion">⭐</span>Servicios por una uña</span>
+            <span class="flechita">▸</span>
+          </button>
+          <div class="grupo-body">
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('ARREGLO DE UNA UÑA')">
+              <span class="iconito">⭐</span><span class="texto">ARREGLO DE UNA UÑA</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('BABY BOOMER CON ACRILICO UNA UÑA')">
+              <span class="iconito">⭐</span><span class="texto">BABY BOOMER CON ACRILICO UNA UÑA</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('BAÑO DE ACRILICO PERMANENTE')">
+              <span class="iconito">⭐</span><span class="texto">BAÑO DE ACRILICO PERMANENTE</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('BAÑO DE ACRILICO TRADICIONAL')">
+              <span class="iconito">⭐</span><span class="texto">BAÑO DE ACRILICO TRADICIONAL</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendarUnas('ENCAPSULADO DE UNA UÑA')">
+              <span class="iconito">⭐</span><span class="texto">ENCAPSULADO DE UNA UÑA</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
 
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL + PEDICURE NORMAL')">
-          <span class="iconito">💅</span><span class="texto">MANICURE NORMAL + PEDICURE NORMAL</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL + PEDICURE PERMANENTE')">
-          <span class="iconito">💅</span><span class="texto">MANICURE NORMAL + PEDICURE PERMANENTE</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE PERMANENTE')">
-          <span class="iconito">💅</span><span class="texto">MANICURE PERMANENTE</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE PERMANENTE + PEDICURE NORMAL')">
-          <span class="iconito">💅</span><span class="texto">MANICURE PERMANENTE + PEDICURE NORMAL</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE  EXPRESS LIMPIEZA O PINTURA')">
-          <span class="iconito">💅</span><span class="texto">PEDICURE  EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE HOMBRE')">
-          <span class="iconito">💅</span><span class="texto">PEDICURE HOMBRE</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE NORMAL')">
-          <span class="iconito">💅</span><span class="texto">PEDICURE NORMAL</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE PERMANENTE')">
-          <span class="iconito">💅</span><span class="texto">PEDICURE PERMANENTE</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('RELLENO DE ACRILICO CON ESMALTE PERMANENTE')">
-          <span class="iconito">💅</span><span class="texto">RELLENO DE ACRILICO CON ESMALTE PERMANENTE</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('RELLENO DE UÑAS')">
-          <span class="iconito">💅</span><span class="texto">RELLENO DE UÑAS</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('RETIRO DE ACRILICO')">
-          <span class="iconito">💅</span><span class="texto">RETIRO DE ACRILICO</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('RETIRO DE ESMALTE PERMANENTE')">
-          <span class="iconito">💅</span><span class="texto">RETIRO DE ESMALTE PERMANENTE</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS BABY BOOMER')">
-          <span class="iconito">💅</span><span class="texto">UÑAS ACRILICAS BABY BOOMER</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS COVER')">
-          <span class="iconito">💅</span><span class="texto">UÑAS ACRILICAS COVER</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS  NORMAL')">
-          <span class="iconito">💅</span><span class="texto">UÑAS ACRILICAS  NORMAL</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS  PERMANENTE')">
-          <span class="iconito">💅</span><span class="texto">UÑAS ACRILICAS  PERMANENTE</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS BABY BOOMER')">
-          <span class="iconito">💅</span><span class="texto">UÑAS ESCULPIDAS BABY BOOMER</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS COVER')">
-          <span class="iconito">💅</span><span class="texto">UÑAS ESCULPIDAS COVER</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS  NORMAL')">
-          <span class="iconito">💅</span><span class="texto">UÑAS ESCULPIDAS  NORMAL</span><span class="flecha">➜</span>
-        </button>
-
-        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS PERMANENTE')">
-          <span class="iconito">💅</span><span class="texto">UÑAS ESCULPIDAS PERMANENTE</span><span class="flecha">➜</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
+      </div> <!-- fin .lista-unas -->
   <!-- POR QUÉ ELEGIRNOS -->
   <section class="por-que">
     <h2>¿Por qué elegir Glamourus Nails Studio?</h2>
@@ -887,6 +979,14 @@
       const chat = document.getElementById("chatWindow");
       chat.style.display = chat.style.display === "block" ? "none" : "block";
     }
+        function toggleGrupo(boton) {
+      boton.classList.toggle("abierto");
+      const body = boton.nextElementSibling;
+      if (!body) return;
+      const visible = body.style.display === "block";
+      body.style.display = visible ? "none" : "block";
+    }
+
   </script>
 </body>
 </html>
