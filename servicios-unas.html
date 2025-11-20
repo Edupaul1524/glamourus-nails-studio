@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios de Uñas - Glamourus Nails Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #ffe6f2, #fff);
+      color: #444;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    .contenedor {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+      padding: 1.8rem 1.6rem 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d63384;
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitulo {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 1.4rem;
+    }
+
+    .volver {
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .volver a {
+      display: inline-block;
+      padding: 0.5rem 1.1rem;
+      background: #d63384;
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .lista-servicios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .btn-servicio {
+      width: 100%;
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-radius: 12px;
+      border: 1px solid #f1c7dd;
+      background: #ffeef7;
+      color: #444;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.2s;
+      font-weight: 500;
+    }
+    .btn-servicio:hover {
+      background: #ffd9ec;
+      border-color: #d63384;
+    }
+
+    @media (max-width: 600px) {
+      .contenedor {
+        padding: 1.4rem 1.1rem 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <div class="volver">
+      <a href="index.html">← Volver a la página principal</a>
+    </div>
+
+    <h1>Servicios de Uñas</h1>
+    <p class="subtitulo">
+      Elige el servicio que deseas y luego agendaremos tu cita en el siguiente paso 💅
+    </p>
+
+    <div class="lista-servicios">
+      <button class="btn-servicio" onclick="irAgendar('ARREGLO DE UNA UÑA')">ARREGLO DE UNA UÑA</button>
+      <button class="btn-servicio" onclick="irAgendar('BABY BOOMER CON ACRILICO UNA UÑA')">BABY BOOMER CON ACRILICO UNA UÑA</button>
+      <button class="btn-servicio" onclick="irAgendar('BAÑO DE ACRILICO PERMANENTE')">BAÑO DE ACRILICO PERMANENTE</button>
+      <button class="btn-servicio" onclick="irAgendar('BAÑO DE ACRILICO TRADICIONAL')">BAÑO DE ACRILICO TRADICIONAL</button>
+      <button class="btn-servicio" onclick="irAgendar('ENCAPSULADO DE UNA UÑA')">ENCAPSULADO DE UNA UÑA</button>
+      <button class="btn-servicio" onclick="irAgendar('MANICURE EXPRESS LIMPIEZA O PINTURA')">MANICURE EXPRESS LIMPIEZA O PINTURA</button>
+      <button class="btn-servicio" onclick="irAgendar('MANICURE HOMBRE')">MANICURE HOMBRE</button>
+      <button class="btn-servicio" onclick="irAgendar('MANICURE NORMAL')">MANICURE NORMAL</button>
+      <button class="btn-servicio" onclick="irAgendar('MANICURE NORMAL + PEDICURE NORMAL')">MANICURE NORMAL + PEDICURE NORMAL</button>
+      <button class="btn-servicio" onclick="irAgendar('MANICURE NORMAL + PEDICURE PERMANENTE')">MANICURE NORMAL + PEDICURE PERMANENTE</button>
+      <button class="btn-servicio" onclick="irAgendar('MANICURE PERMANENTE')">MANICURE PERMANENTE</button>
+      <button class="btn-servicio" onclick="irAgendar('MANICURE PERMANENTE + PEDICURE NORMAL')">MANICURE PERMANENTE + PEDICURE NORMAL</button>
+      <button class="btn-servicio" onclick="irAgendar('PEDICURE EXPRESS LIMPIEZA O PINTURA')">PEDICURE  EXPRESS LIMPIEZA O PINTURA</button>
+      <button class="btn-servicio" onclick="irAgendar('PEDICURE HOMBRE')">PEDICURE HOMBRE</button>
+      <button class="btn-servicio" onclick="irAgendar('PEDICURE NORMAL')">PEDICURE NORMAL</button>
+      <button class="btn-servicio" onclick="irAgendar('PEDICURE PERMANENTE')">PEDICURE PERMANENTE</button>
+      <button class="btn-servicio" onclick="irAgendar('RELLENO DE ACRILICO CON ESMALTE PERMANENTE')">RELLENO DE ACRILICO CON ESMALTE PERMANENTE</button>
+      <button class="btn-servicio" onclick="irAgendar('RELLENO DE UÑAS')">RELLENO DE UÑAS</button>
+      <button class="btn-servicio" onclick="irAgendar('RETIRO DE ACRILICO')">RETIRO DE ACRILICO</button>
+      <button class="btn-servicio" onclick="irAgendar('RETIRO DE ESMALTE PERMANENTE')">RETIRO DE ESMALTE PERMANENTE</button>
+      <button class="btn-servicio" onclick="irAgendar('UÑAS ACRILICAS BABY BOOMER')">UÑAS ACRILICAS BABY BOOMER</button>
+      <button class="btn-servicio" onclick="irAgendar('UÑAS ACRILICAS COVER')">UÑAS ACRILICAS COVER</button>
+      <button class="btn-servicio" onclick="irAgendar('UÑAS ACRILICAS NORMAL')">UÑAS ACRILICAS NORMAL</button>
+      <button class="btn-servicio" onclick="irAgendar('UÑAS ACRILICAS PERMANENTE')">UÑAS ACRILICAS PERMANENTE</button>
+      <button class="btn-servicio" onclick="irAgendar('UÑAS ESCULPIDAS BABY BOOMER')">UÑAS ESCULPIDAS BABY BOOMER</button>
+      <button class="btn-servicio" onclick="irAgendar('UÑAS ESCULPIDAS COVER')">UÑAS ESCULPIDAS COVER</button>
+      <button class="btn-servicio" onclick="irAgendar('UÑAS ESCULPIDAS NORMAL')">UÑAS ESCULPIDAS NORMAL</button>
+      <button class="btn-servicio" onclick="irAgendar('UÑAS ESCULPIDAS PERMANENTE')">UÑAS ESCULPIDAS PERMANENTE</button>
+    </div>
+  </div>
+
+  <script>
+    function irAgendar(servicio) {
+      // Lleva a agendar.html con el servicio elegido en la URL
+      window.location.href = "agendar.html?servicio=" + encodeURIComponent(servicio);
+    }
+  </script>
+</body>
+</html>
