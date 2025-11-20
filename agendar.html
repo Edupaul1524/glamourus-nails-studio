@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agendar cita - Glamourus Nails Studio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -18,24 +18,48 @@
     }
     .contenedor {
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
       background: #fff;
       border-radius: 24px;
       box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-      padding: 1.8rem 1.6rem 1.8rem;
+      padding: 2rem 1.8rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .marca {
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.5rem;
+      color: #d63384;
+      margin-bottom: 0.2rem;
     }
     .titulo {
       text-align: center;
-      margin-bottom: 0.5rem;
-      color: #d63384;
-      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+      color: #333;
+      font-size: 1.3rem;
       font-weight: 600;
     }
     .subtitulo {
       text-align: center;
       font-size: 0.9rem;
       color: #777;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.3rem;
+    }
+    .badge-servicio {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+    .badge-servicio span {
+      display: inline-block;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #ffe6f2;
+      color: #d63384;
+      font-weight: 500;
+      font-size: 0.8rem;
     }
     label {
       display: block;
@@ -51,6 +75,12 @@
       border: 1px solid #e4c5d8;
       font-family: inherit;
       font-size: 0.9rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #d63384;
+      box-shadow: 0 0 0 2px rgba(214,51,132,0.15);
     }
     textarea {
       resize: vertical;
@@ -67,9 +97,18 @@
       background: #d63384;
       color: #fff;
       margin-top: 0.3rem;
+      font-weight: 600;
+      transition: background .2s, transform .1s;
     }
     button:hover {
       background: #b02a6e;
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    button:disabled {
+      opacity: 0.7;
+      cursor: default;
     }
     .mensaje {
       margin-top: 0.7rem;
@@ -89,14 +128,28 @@
       text-decoration: none;
       font-weight: 500;
     }
+    .pie a:hover {
+      text-decoration: underline;
+    }
+    .nota {
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-top: 0.4rem;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="contenedor">
+    <div class="marca">Glamourus Nails Studio</div>
     <h1 class="titulo">Agendar cita</h1>
     <p class="subtitulo">
       Completa tus datos y te contactaremos por WhatsApp para confirmar tu horario 💅
     </p>
+
+    <div id="bloque-servicio" class="badge-servicio" style="display:none;">
+      Has elegido: <span id="nombre-servicio"></span>
+    </div>
 
     <form id="form-cita">
       <label for="nombre">Nombre completo</label>
@@ -126,10 +179,14 @@
       <label for="comentario">Comentario (opcional)</label>
       <textarea id="comentario" placeholder="Ej: prefiero en la tarde, tengo uñas acrílicas..."></textarea>
 
-      <button type="submit">Enviar solicitud de cita</button>
+      <button type="submit" id="btn-enviar">Enviar solicitud de cita</button>
     </form>
 
     <div id="mensaje-form" class="mensaje"></div>
+
+    <p class="nota">
+      Tus datos serán usados solo para coordinar tu cita. No compartimos tu información con terceros.
+    </p>
 
     <p class="pie">
       GLAMOURUS NAILS STUDIO ·
@@ -152,12 +209,17 @@
     const form = document.getElementById("form-cita");
     const mensajeForm = document.getElementById("mensaje-form");
     const selectServicio = document.getElementById("servicio");
+    const btnEnviar = document.getElementById("btn-enviar");
+    const bloqueServicio = document.getElementById("bloque-servicio");
+    const nombreServicioSpan = document.getElementById("nombre-servicio");
 
     // 🔥 LEER SERVICIO DESDE LA URL Y PRESELECCIONAR
     const params = new URLSearchParams(window.location.search);
     const servicioURL = params.get("servicio");
     if (servicioURL) {
       selectServicio.value = servicioURL;
+      bloqueServicio.style.display = "block";
+      nombreServicioSpan.textContent = servicioURL;
     }
 
     form.addEventListener("submit", async (e) => {
@@ -178,6 +240,9 @@
         return;
       }
 
+      btnEnviar.disabled = true;
+      btnEnviar.textContent = "Enviando...";
+
       const { error } = await db.from(tabla).insert({
         nombre,
         telefono,
@@ -195,7 +260,14 @@
         mensajeForm.textContent = "¡Gracias! 💖 Hemos recibido tu solicitud. Te escribiremos por WhatsApp para confirmar tu cita.";
         mensajeForm.className = "mensaje ok";
         form.reset();
+        // Si venía servicio desde URL, mantenemos el aviso:
+        if (servicioURL) {
+          selectServicio.value = servicioURL;
+        }
       }
+
+      btnEnviar.disabled = false;
+      btnEnviar.textContent = "Enviar solicitud de cita";
     });
   </script>
 </body>
