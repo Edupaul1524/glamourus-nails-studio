@@ -575,6 +575,99 @@
         });
     });
   </script>
+<!-- CHATBOT GLAMOURUS -->
+<style>
+  .chatbot-bubble {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: #d63384;
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 999;
+    transition: transform 0.2s;
+  }
+  .chatbot-bubble:hover { transform: scale(1.1); }
+
+  .chatbot-window {
+    position: fixed;
+    bottom: 160px;
+    right: 20px;
+    width: 270px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    padding: 1rem;
+    display: none;
+    z-index: 999;
+  }
+
+  .chatbot-header {
+    font-weight: 600;
+    color: #d63384;
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+    text-align: center;
+  }
+
+  .chatbot-btn {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 0.5rem;
+    border-radius: 12px;
+    border: none;
+    background: #ffe6f2;
+    color: #d63384;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .chatbot-btn:hover {
+    background: #ffd9ec;
+  }
+</style>
+
+<div class="chatbot-bubble" onclick="toggleChat()">💬</div>
+
+<div class="chatbot-window" id="chatWindow">
+  <div class="chatbot-header">Hola 👋 soy tu asistente</div>
+
+  <button class="chatbot-btn"
+    onclick="window.location.href='#servicios'">
+    Ver servicios
+  </button>
+
+  <button class="chatbot-btn"
+    onclick="window.location.href='agendar.html'">
+    Agendar cita online
+  </button>
+
+  <button class="chatbot-btn"
+    onclick="window.open('https://wa.me/593987356186','_blank')">
+    Escribir por WhatsApp
+  </button>
+
+  <button class="chatbot-btn"
+    onclick="window.open('https://www.google.com/maps?q=0%C2%B005%2722.7%22S+78%C2%B028%2721.2%22W','_blank')">
+    Ver ubicación
+  </button>
+</div>
+
+<script>
+  function toggleChat() {
+    const chat = document.getElementById("chatWindow");
+    chat.style.display = chat.style.display === "block" ? "none" : "block";
+  }
+</script>
 
 </body>
 </html>
