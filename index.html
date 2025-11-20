@@ -62,17 +62,13 @@
       background: var(--rosa);
       color: #fff;
     }
-    .btn-primario:hover {
-      background: var(--rosa-osc);
-    }
+    .btn-primario:hover { background: var(--rosa-osc); }
     .btn-secundario {
       background: #fff;
       color: var(--rosa);
       border: 1px solid #f5b8d6;
     }
-    .btn-secundario:hover {
-      background: #ffe6f2;
-    }
+    .btn-secundario:hover { background: #ffe6f2; }
 
     /* SECCIÓN DESTACADA */
     .destacado {
@@ -137,15 +133,12 @@
       margin: 2rem auto;
       animation: fadeIn 1.2s ease;
     }
-
     .servicios h2 {
       color: var(--rosa);
       font-size: 1.8rem;
       margin-bottom: 0.5rem;
       font-weight: 600;
-      font-family: 'Poppins', sans-serif;
     }
-
     .servicios p {
       color: #666;
       font-size: 1rem;
@@ -174,10 +167,7 @@
       color: var(--rosa);
       font-weight: 500;
     }
-    header a.ig img {
-      width: 18px;
-      height: 18px;
-    }
+    header a.ig img { width: 18px; height: 18px; }
 
     /* CATEGORÍAS */
     .catalogo {
@@ -338,6 +328,139 @@
     .whatsapp-float:hover { transform: scale(1.1); }
     .whatsapp-float img { width: 45px; height: 45px; display: block; }
 
+    /* MODAL SERVICIOS UÑAS (ELEGANTE) */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1100;
+    }
+    .modal-unas {
+      background: #ffffff;
+      max-width: 620px;
+      width: 92%;
+      max-height: 80vh;
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+      padding: 1.6rem 1.5rem 1.4rem;
+      overflow-y: auto;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+    .modal-header h3 {
+      color: var(--rosa);
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+    .modal-close {
+      border: none;
+      background: transparent;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #aaa;
+    }
+    .modal-subtitle {
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 1rem;
+    }
+    .lista-unas {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .btn-servicio-unas {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.55rem 0.8rem;
+      border-radius: 14px;
+      border: 1px solid #f3c8df;
+      background: #fff9fc;
+      color: #444;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: 0.18s ease;
+      font-weight: 500;
+    }
+    .btn-servicio-unas span.iconito {
+      font-size: 1rem;
+      margin-right: 0.25rem;
+    }
+    .btn-servicio-unas span.texto { flex: 1; }
+    .btn-servicio-unas span.flecha {
+      font-size: 1rem;
+      color: #d63384;
+    }
+    .btn-servicio-unas:hover {
+      background: #ffe6f2;
+      border-color: var(--rosa);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+    }
+
+    /* CHATBOT GLAMOURUS */
+    .chatbot-bubble {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: #d63384;
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: transform 0.2s;
+    }
+    .chatbot-bubble:hover { transform: scale(1.1); }
+
+    .chatbot-window {
+      position: fixed;
+      bottom: 160px;
+      right: 20px;
+      width: 270px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      padding: 1rem;
+      display: none;
+      z-index: 999;
+    }
+    .chatbot-header {
+      font-weight: 600;
+      color: #d63384;
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+      text-align: center;
+    }
+    .chatbot-btn {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 0.5rem;
+      border-radius: 12px;
+      border: none;
+      background: #ffe6f2;
+      color: #d63384;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .chatbot-btn:hover { background: #ffd9ec; }
+
     /* ANIMACIONES */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
@@ -364,7 +487,6 @@
   <!-- SECCIÓN DESTACADA -->
   <section class="destacado">
     <div class="lema">
-      <!-- Dejamos vacío, el texto lo pone JS -->
       <p id="frase-animada"></p>
     </div>
 
@@ -397,12 +519,12 @@
   </header>
 
   <!-- SECCIÓN DE SERVICIOS -->
-  <section class="servicios">
+  <section class="servicios" id="servicios">
     <h2>Nuestros Servicios</h2>
     <p>Conoce nuestras principales áreas de atención, pensadas para resaltar tu belleza y bienestar 🌸</p>
   </section>
 
-   <!-- CATEGORÍAS -->
+  <!-- CATEGORÍAS -->
   <div class="catalogo">
     <div class="categoria" onclick="window.location.href='agendar.html?servicio=Cabello'">
       <h2>Cabello</h2>
@@ -420,8 +542,8 @@
       <h2>Pestañas</h2>
     </div>
 
-    <!-- 👇 AQUÍ CAMBIAMOS SOLO UÑAS PARA QUE VAYA A LA LISTA -->
-    <div class="categoria" onclick="location.href='servicios-unas.html'"><h2>Uñas</h2></div>
+    <!-- UÑAS ABRE MODAL -->
+    <div class="categoria" onclick="abrirServiciosUnas()">
       <h2>Uñas</h2>
     </div>
 
@@ -430,6 +552,132 @@
     </div>
   </div>
 
+  <!-- MODAL SERVICIOS UÑAS -->
+  <div id="overlay-unas" class="modal-overlay">
+    <div class="modal-unas">
+      <div class="modal-header">
+        <h3>Servicios de Uñas</h3>
+        <button class="modal-close" onclick="cerrarServiciosUnas()">✕</button>
+      </div>
+      <p class="modal-subtitle">
+        Elige el servicio que deseas y en el siguiente paso agendaremos tu cita 💅
+      </p>
+
+      <div class="lista-unas">
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('ARREGLO DE UNA UÑA')">
+          <span class="iconito">💅</span><span class="texto">ARREGLO DE UNA UÑA</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('BABY BOOMER CON ACRILICO UNA UÑA')">
+          <span class="iconito">💅</span><span class="texto">BABY BOOMER CON ACRILICO UNA UÑA</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('BAÑO DE ACRILICO PERMANENTE')">
+          <span class="iconito">💅</span><span class="texto">BAÑO DE ACRILICO PERMANENTE</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('BAÑO DE ACRILICO TRADICIONAL')">
+          <span class="iconito">💅</span><span class="texto">BAÑO DE ACRILICO TRADICIONAL</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('ENCAPSULADO DE UNA UÑA')">
+          <span class="iconito">💅</span><span class="texto">ENCAPSULADO DE UNA UÑA</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE EXPRESS LIMPIEZA O PINTURA')">
+          <span class="iconito">💅</span><span class="texto">MANICURE EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE HOMBRE')">
+          <span class="iconito">💅</span><span class="texto">MANICURE HOMBRE</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL')">
+          <span class="iconito">💅</span><span class="texto">MANICURE NORMAL</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL + PEDICURE NORMAL')">
+          <span class="iconito">💅</span><span class="texto">MANICURE NORMAL + PEDICURE NORMAL</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL + PEDICURE PERMANENTE')">
+          <span class="iconito">💅</span><span class="texto">MANICURE NORMAL + PEDICURE PERMANENTE</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE PERMANENTE')">
+          <span class="iconito">💅</span><span class="texto">MANICURE PERMANENTE</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE PERMANENTE + PEDICURE NORMAL')">
+          <span class="iconito">💅</span><span class="texto">MANICURE PERMANENTE + PEDICURE NORMAL</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE  EXPRESS LIMPIEZA O PINTURA')">
+          <span class="iconito">💅</span><span class="texto">PEDICURE  EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE HOMBRE')">
+          <span class="iconito">💅</span><span class="texto">PEDICURE HOMBRE</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE NORMAL')">
+          <span class="iconito">💅</span><span class="texto">PEDICURE NORMAL</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE PERMANENTE')">
+          <span class="iconito">💅</span><span class="texto">PEDICURE PERMANENTE</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('RELLENO DE ACRILICO CON ESMALTE PERMANENTE')">
+          <span class="iconito">💅</span><span class="texto">RELLENO DE ACRILICO CON ESMALTE PERMANENTE</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('RELLENO DE UÑAS')">
+          <span class="iconito">💅</span><span class="texto">RELLENO DE UÑAS</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('RETIRO DE ACRILICO')">
+          <span class="iconito">💅</span><span class="texto">RETIRO DE ACRILICO</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('RETIRO DE ESMALTE PERMANENTE')">
+          <span class="iconito">💅</span><span class="texto">RETIRO DE ESMALTE PERMANENTE</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS BABY BOOMER')">
+          <span class="iconito">💅</span><span class="texto">UÑAS ACRILICAS BABY BOOMER</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS COVER')">
+          <span class="iconito">💅</span><span class="texto">UÑAS ACRILICAS COVER</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS  NORMAL')">
+          <span class="iconito">💅</span><span class="texto">UÑAS ACRILICAS  NORMAL</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS  PERMANENTE')">
+          <span class="iconito">💅</span><span class="texto">UÑAS ACRILICAS  PERMANENTE</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS BABY BOOMER')">
+          <span class="iconito">💅</span><span class="texto">UÑAS ESCULPIDAS BABY BOOMER</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS COVER')">
+          <span class="iconito">💅</span><span class="texto">UÑAS ESCULPIDAS COVER</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS  NORMAL')">
+          <span class="iconito">💅</span><span class="texto">UÑAS ESCULPIDAS  NORMAL</span><span class="flecha">➜</span>
+        </button>
+
+        <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS PERMANENTE')">
+          <span class="iconito">💅</span><span class="texto">UÑAS ESCULPIDAS PERMANENTE</span><span class="flecha">➜</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- POR QUÉ ELEGIRNOS -->
   <section class="por-que">
@@ -494,7 +742,7 @@
     <p>📞 WhatsApp: <a href="https://wa.me/593987356186" target="_blank">0987356186</a></p>
   </section>
   
-  <!-- ACCESO PARA MANICURISTAS -->
+  <!-- ACCESOS INTERNOS -->
   <div style="text-align:center; margin: 2rem 0 1rem 0;">
     <a href="Recordatorios.html" 
        style="display:inline-block;
@@ -509,8 +757,7 @@
     </a>
   </div>
 
-  <!-- ACCESO PARA CONTROL DE CITAS (SOLO ADMINISTRACIÓN) -->
-  <div style="text-align:center; margin-bottom: 2rem;">
+  <div style="text-align:center; margin-bottom: 1rem;">
     <a href="citas.html"
        style="display:inline-block;
               padding: 0.6rem 1.2rem;
@@ -523,7 +770,7 @@
       📅 Control de citas (solo administración)
     </a>
   </div>
-  <!-- ACCESO PARA SERVICIOS (SOLO ADMINISTRACIÓN) -->
+
   <div style="text-align:center; margin-bottom: 2rem;">
     <a href="servicios.html"
        style="display:inline-block;
@@ -540,17 +787,39 @@
 
   <footer>
     © 2025 GLAMOURUS NAILS STUDIO | Diseñado con 💖 en Quito
-
-    <!-- CONTADOR DE VISITAS (DISCRETO) -->
     <small style="display:block; margin-top:0.4rem; font-size:0.75rem; color:#999;">
       👁‍🗨 Más de <span id="visit-counter">0</span> personas han visitado nuestra página ✨
     </small>
   </footer>
 
+  <!-- BOTÓN WHATSAPP FLOTANTE -->
   <a href="https://wa.me/593987356186?text=Hola!%20Quiero%20una%20cita%20en%20GLAMOURUS%20NAILS%20STUDIO%20💅"
      class="whatsapp-float" target="_blank" rel="noopener">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
   </a>
+
+  <!-- CHATBOT -->
+  <div class="chatbot-bubble" onclick="toggleChat()">💬</div>
+
+  <div class="chatbot-window" id="chatWindow">
+    <div class="chatbot-header">Hola 👋 soy tu asistente</div>
+
+    <button class="chatbot-btn" onclick="window.location.href='#servicios'">
+      Ver servicios
+    </button>
+
+    <button class="chatbot-btn" onclick="window.location.href='agendar.html'">
+      Agendar cita online
+    </button>
+
+    <button class="chatbot-btn" onclick="window.open('https://wa.me/593987356186','_blank')">
+      Escribir por WhatsApp
+    </button>
+
+    <button class="chatbot-btn" onclick="window.open('https://www.google.com/maps?q=0%C2%B005%2722.7%22S+78%C2%B028%2721.2%22W','_blank')">
+      Ver ubicación
+    </button>
+  </div>
 
   <script>
     // Slider automático de testimonios
@@ -578,26 +847,31 @@
       "Cuidamos cada detalle 💅",
       "Tu bienestar, nuestra pasión 🌸"
     ];
-
     let fraseIndex = 0;
     const fraseElement = document.querySelector("#frase-animada");
-
-    // Mostrar la primera frase de inmediato
     fraseElement.textContent = frases[fraseIndex];
-
-    // Cambiar la frase cada 4 segundos
     setInterval(() => {
       fraseIndex = (fraseIndex + 1) % frases.length;
       fraseElement.textContent = frases[fraseIndex];
     }, 4000);
-  </script>
 
-  <!-- CONTADOR DE VISITAS -->
-  <script>
+    // Modal servicios uñas
+    function abrirServiciosUnas() {
+      const overlay = document.getElementById("overlay-unas");
+      if (overlay) overlay.style.display = "flex";
+    }
+    function cerrarServiciosUnas() {
+      const overlay = document.getElementById("overlay-unas");
+      if (overlay) overlay.style.display = "none";
+    }
+    function irAgendarUnas(servicio) {
+      window.location.href = "agendar.html?servicio=" + encodeURIComponent(servicio);
+    }
+
+    // Contador de visitas
     document.addEventListener("DOMContentLoaded", function () {
       const counterEl = document.getElementById("visit-counter");
       if (!counterEl) return;
-
       fetch("https://api.countapi.xyz/hit/glamourus-nails-studio/visitas")
         .then(r => r.json())
         .then(d => {
@@ -607,101 +881,13 @@
           counterEl.textContent = "0";
         });
     });
+
+    // Chatbot toggle
+    function toggleChat() {
+      const chat = document.getElementById("chatWindow");
+      chat.style.display = chat.style.display === "block" ? "none" : "block";
+    }
   </script>
-<!-- CHATBOT GLAMOURUS -->
-<style>
-  .chatbot-bubble {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    background: #d63384;
-    color: white;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    z-index: 999;
-    transition: transform 0.2s;
-  }
-  .chatbot-bubble:hover { transform: scale(1.1); }
-
-  .chatbot-window {
-    position: fixed;
-    bottom: 160px;
-    right: 20px;
-    width: 270px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    padding: 1rem;
-    display: none;
-    z-index: 999;
-  }
-
-  .chatbot-header {
-    font-weight: 600;
-    color: #d63384;
-    font-size: 1rem;
-    margin-bottom: 0.7rem;
-    text-align: center;
-  }
-
-  .chatbot-btn {
-    width: 100%;
-    padding: 0.6rem;
-    margin-bottom: 0.5rem;
-    border-radius: 12px;
-    border: none;
-    background: #ffe6f2;
-    color: #d63384;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-
-  .chatbot-btn:hover {
-    background: #ffd9ec;
-  }
-</style>
-
-<div class="chatbot-bubble" onclick="toggleChat()">💬</div>
-
-<div class="chatbot-window" id="chatWindow">
-  <div class="chatbot-header">Hola 👋 soy tu asistente</div>
-
-  <button class="chatbot-btn"
-    onclick="window.location.href='#servicios'">
-    Ver servicios
-  </button>
-
-  <button class="chatbot-btn"
-    onclick="window.location.href='agendar.html'">
-    Agendar cita online
-  </button>
-
-  <button class="chatbot-btn"
-    onclick="window.open('https://wa.me/593987356186','_blank')">
-    Escribir por WhatsApp
-  </button>
-
-  <button class="chatbot-btn"
-    onclick="window.open('https://www.google.com/maps?q=0%C2%B005%2722.7%22S+78%C2%B028%2721.2%22W','_blank')">
-    Ver ubicación
-  </button>
-</div>
-
-<script>
-  function toggleChat() {
-    const chat = document.getElementById("chatWindow");
-    chat.style.display = chat.style.display === "block" ? "none" : "block";
-  }
-</script>
-
 </body>
 </html>
 
