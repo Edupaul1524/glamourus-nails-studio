@@ -328,7 +328,7 @@
     .whatsapp-float:hover { transform: scale(1.1); }
     .whatsapp-float img { width: 45px; height: 45px; display: block; }
 
-    /* MODAL SERVICIOS UÑAS (ELEGANTE) */
+    /* MODAL SERVICIOS UÑAS (AGRUPADO) */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -371,7 +371,8 @@
       color: #777;
       margin-bottom: 1rem;
     }
-       .lista-unas {
+
+    .lista-unas {
       display: flex;
       flex-direction: column;
       gap: 0.9rem;
@@ -414,8 +415,7 @@
 
     .grupo-body {
       margin-top: 0.4rem;
-      display: none; /* se abre con JS */
-      display: flex;
+      display: none;
       flex-direction: column;
       gap: 0.35rem;
     }
@@ -457,7 +457,6 @@
       transform: translateY(-1px);
       box-shadow: 0 3px 8px rgba(0,0,0,0.06);
     }
-
 
     /* CHATBOT GLAMOURUS */
     .chatbot-bubble {
@@ -614,6 +613,7 @@
       <p class="modal-subtitle">
         Elige el servicio que deseas y en el siguiente paso agendaremos tu cita 💅
       </p>
+
       <div class="lista-unas">
 
         <!-- MANICURE -->
@@ -770,7 +770,10 @@
           </div>
         </div>
 
-      </div> <!-- fin .lista-unas -->
+      </div>
+    </div>
+  </div>
+
   <!-- POR QUÉ ELEGIRNOS -->
   <section class="por-que">
     <h2>¿Por qué elegir Glamourus Nails Studio?</h2>
@@ -918,6 +921,7 @@
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     setInterval(() => {
+      if (!slides.length) return;
       slides[currentSlide].classList.remove('active');
       currentSlide = (currentSlide + 1) % slides.length;
       slides[currentSlide].classList.add('active');
@@ -941,11 +945,13 @@
     ];
     let fraseIndex = 0;
     const fraseElement = document.querySelector("#frase-animada");
-    fraseElement.textContent = frases[fraseIndex];
-    setInterval(() => {
-      fraseIndex = (fraseIndex + 1) % frases.length;
+    if (fraseElement) {
       fraseElement.textContent = frases[fraseIndex];
-    }, 4000);
+      setInterval(() => {
+        fraseIndex = (fraseIndex + 1) % frases.length;
+        fraseElement.textContent = frases[fraseIndex];
+      }, 4000);
+    }
 
     // Modal servicios uñas
     function abrirServiciosUnas() {
@@ -958,6 +964,14 @@
     }
     function irAgendarUnas(servicio) {
       window.location.href = "agendar.html?servicio=" + encodeURIComponent(servicio);
+    }
+
+    function toggleGrupo(boton) {
+      boton.classList.toggle("abierto");
+      const body = boton.nextElementSibling;
+      if (!body) return;
+      const visible = body.style.display === "block";
+      body.style.display = visible ? "none" : "block";
     }
 
     // Contador de visitas
@@ -979,14 +993,6 @@
       const chat = document.getElementById("chatWindow");
       chat.style.display = chat.style.display === "block" ? "none" : "block";
     }
-        function toggleGrupo(boton) {
-      boton.classList.toggle("abierto");
-      const body = boton.nextElementSibling;
-      if (!body) return;
-      const visible = body.style.display === "block";
-      body.style.display = visible ? "none" : "block";
-    }
-
   </script>
 </body>
 </html>
