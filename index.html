@@ -328,7 +328,7 @@
     .whatsapp-float:hover { transform: scale(1.1); }
     .whatsapp-float img { width: 45px; height: 45px; display: block; }
 
-    /* MODAL SERVICIOS UÑAS (AGRUPADO) */
+    /* MODALES DE SERVICIOS */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -577,45 +577,43 @@
 
   <!-- CATEGORÍAS -->
   <div class="catalogo">
-    <div class="categoria" onclick="window.location.href='agendar.html?servicio=Cabello'">
+    <div class="categoria" onclick="abrirServicios('cabello')">
       <h2>Cabello</h2>
     </div>
 
-    <div class="categoria" onclick="window.location.href='agendar.html?servicio=Depilación con cera'">
+    <div class="categoria" onclick="abrirServicios('cera')">
       <h2>Depilación con Cera</h2>
     </div>
 
-    <div class="categoria" onclick="window.location.href='agendar.html?servicio=Depilación Gillette'">
+    <div class="categoria" onclick="abrirServicios('gillette')">
       <h2>Depilación Gillette</h2>
     </div>
 
-    <div class="categoria" onclick="window.location.href='agendar.html?servicio=Pestañas'">
+    <div class="categoria" onclick="abrirServicios('pestanas')">
       <h2>Pestañas</h2>
     </div>
 
-    <!-- UÑAS ABRE MODAL -->
-    <div class="categoria" onclick="abrirServiciosUnas()">
+    <div class="categoria" onclick="abrirServicios('unas')">
       <h2>Uñas</h2>
     </div>
 
-    <div class="categoria" onclick="window.location.href='agendar.html?servicio=Masajes'">
+    <div class="categoria" onclick="abrirServicios('masajes')">
       <h2>Masajes</h2>
     </div>
   </div>
 
-  <!-- MODAL SERVICIOS UÑAS -->
+  <!-- MODAL UÑAS -->
   <div id="overlay-unas" class="modal-overlay">
     <div class="modal-unas">
       <div class="modal-header">
         <h3>Servicios de Uñas</h3>
-        <button class="modal-close" onclick="cerrarServiciosUnas()">✕</button>
+        <button class="modal-close" onclick="cerrarServicios('unas')">✕</button>
       </div>
       <p class="modal-subtitle">
         Elige el servicio que deseas y en el siguiente paso agendaremos tu cita 💅
       </p>
 
       <div class="lista-unas">
-
         <!-- MANICURE -->
         <div class="grupo-unas">
           <button class="grupo-titulo" onclick="toggleGrupo(this)">
@@ -623,16 +621,16 @@
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE EXPRESS LIMPIEZA O PINTURA')">
+            <button class="btn-servicio-unas" onclick="irAgendar('MANICURE EXPRESS LIMPIEZA O PINTURA')">
               <span class="iconito">✨</span><span class="texto">MANICURE EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE HOMBRE')">
+            <button class="btn-servicio-unas" onclick="irAgendar('MANICURE HOMBRE')">
               <span class="iconito">✨</span><span class="texto">MANICURE HOMBRE</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL')">
+            <button class="btn-servicio-unas" onclick="irAgendar('MANICURE NORMAL')">
               <span class="iconito">✨</span><span class="texto">MANICURE NORMAL</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE PERMANENTE')">
+            <button class="btn-servicio-unas" onclick="irAgendar('MANICURE PERMANENTE')">
               <span class="iconito">✨</span><span class="texto">MANICURE PERMANENTE</span><span class="flecha">➜</span>
             </button>
           </div>
@@ -645,13 +643,13 @@
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL + PEDICURE NORMAL')">
+            <button class="btn-servicio-unas" onclick="irAgendar('MANICURE NORMAL + PEDICURE NORMAL')">
               <span class="iconito">🦶</span><span class="texto">MANICURE NORMAL + PEDICURE NORMAL</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE NORMAL + PEDICURE PERMANENTE')">
+            <button class="btn-servicio-unas" onclick="irAgendar('MANICURE NORMAL + PEDICURE PERMANENTE')">
               <span class="iconito">🦶</span><span class="texto">MANICURE NORMAL + PEDICURE PERMANENTE</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('MANICURE PERMANENTE + PEDICURE NORMAL')">
+            <button class="btn-servicio-unas" onclick="irAgendar('MANICURE PERMANENTE + PEDICURE NORMAL')">
               <span class="iconito">🦶</span><span class="texto">MANICURE PERMANENTE + PEDICURE NORMAL</span><span class="flecha">➜</span>
             </button>
           </div>
@@ -664,16 +662,16 @@
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE  EXPRESS LIMPIEZA O PINTURA')">
+            <button class="btn-servicio-unas" onclick="irAgendar('PEDICURE  EXPRESS LIMPIEZA O PINTURA')">
               <span class="iconito">🦶</span><span class="texto">PEDICURE  EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE HOMBRE')">
+            <button class="btn-servicio-unas" onclick="irAgendar('PEDICURE HOMBRE')">
               <span class="iconito">🦶</span><span class="texto">PEDICURE HOMBRE</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE NORMAL')">
+            <button class="btn-servicio-unas" onclick="irAgendar('PEDICURE NORMAL')">
               <span class="iconito">🦶</span><span class="texto">PEDICURE NORMAL</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('PEDICURE PERMANENTE')">
+            <button class="btn-servicio-unas" onclick="irAgendar('PEDICURE PERMANENTE')">
               <span class="iconito">🦶</span><span class="texto">PEDICURE PERMANENTE</span><span class="flecha">➜</span>
             </button>
           </div>
@@ -686,16 +684,16 @@
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS BABY BOOMER')">
+            <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ACRILICAS BABY BOOMER')">
               <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS BABY BOOMER</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS COVER')">
+            <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ACRILICAS COVER')">
               <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS COVER</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS  NORMAL')">
+            <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ACRILICAS  NORMAL')">
               <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS  NORMAL</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ACRILICAS  PERMANENTE')">
+            <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ACRILICAS  PERMANENTE')">
               <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS  PERMANENTE</span><span class="flecha">➜</span>
             </button>
           </div>
@@ -708,16 +706,16 @@
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS BABY BOOMER')">
+            <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ESCULPIDAS BABY BOOMER')">
               <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS BABY BOOMER</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS COVER')">
+            <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ESCULPIDAS COVER')">
               <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS COVER</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS  NORMAL')">
+            <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ESCULPIDAS  NORMAL')">
               <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS  NORMAL</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('UÑAS ESCULPIDAS PERMANENTE')">
+            <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ESCULPIDAS PERMANENTE')">
               <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS PERMANENTE</span><span class="flecha">➜</span>
             </button>
           </div>
@@ -730,16 +728,16 @@
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('RELLENO DE ACRILICO CON ESMALTE PERMANENTE')">
+            <button class="btn-servicio-unas" onclick="irAgendar('RELLENO DE ACRILICO CON ESMALTE PERMANENTE')">
               <span class="iconito">🔁</span><span class="texto">RELLENO DE ACRILICO CON ESMALTE PERMANENTE</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('RELLENO DE UÑAS')">
+            <button class="btn-servicio-unas" onclick="irAgendar('RELLENO DE UÑAS')">
               <span class="iconito">🔁</span><span class="texto">RELLENO DE UÑAS</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('RETIRO DE ACRILICO')">
+            <button class="btn-servicio-unas" onclick="irAgendar('RETIRO DE ACRILICO')">
               <span class="iconito">🗑</span><span class="texto">RETIRO DE ACRILICO</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('RETIRO DE ESMALTE PERMANENTE')">
+            <button class="btn-servicio-unas" onclick="irAgendar('RETIRO DE ESMALTE PERMANENTE')">
               <span class="iconito">🗑</span><span class="texto">RETIRO DE ESMALTE PERMANENTE</span><span class="flecha">➜</span>
             </button>
           </div>
@@ -752,24 +750,172 @@
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('ARREGLO DE UNA UÑA')">
+            <button class="btn-servicio-unas" onclick="irAgendar('ARREGLO DE UNA UÑA')">
               <span class="iconito">⭐</span><span class="texto">ARREGLO DE UNA UÑA</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('BABY BOOMER CON ACRILICO UNA UÑA')">
+            <button class="btn-servicio-unas" onclick="irAgendar('BABY BOOMER CON ACRILICO UNA UÑA')">
               <span class="iconito">⭐</span><span class="texto">BABY BOOMER CON ACRILICO UNA UÑA</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('BAÑO DE ACRILICO PERMANENTE')">
+            <button class="btn-servicio-unas" onclick="irAgendar('BAÑO DE ACRILICO PERMANENTE')">
               <span class="iconito">⭐</span><span class="texto">BAÑO DE ACRILICO PERMANENTE</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('BAÑO DE ACRILICO TRADICIONAL')">
+            <button class="btn-servicio-unas" onclick="irAgendar('BAÑO DE ACRILICO TRADICIONAL')">
               <span class="iconito">⭐</span><span class="texto">BAÑO DE ACRILICO TRADICIONAL</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendarUnas('ENCAPSULADO DE UNA UÑA')">
+            <button class="btn-servicio-unas" onclick="irAgendar('ENCAPSULADO DE UNA UÑA')">
               <span class="iconito">⭐</span><span class="texto">ENCAPSULADO DE UNA UÑA</span><span class="flecha">➜</span>
             </button>
           </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CABELLO -->
+  <div id="overlay-cabello" class="modal-overlay">
+    <div class="modal-unas">
+      <div class="modal-header">
+        <h3>Servicios de Cabello</h3>
+        <button class="modal-close" onclick="cerrarServicios('cabello')">✕</button>
+      </div>
+      <p class="modal-subtitle">Elige el servicio de cabello que deseas 💇‍♀️</p>
+      <div class="lista-unas">
+        <div class="grupo-unas">
+          <div class="grupo-body" style="display:flex;">
+            <button class="btn-servicio-unas" onclick="irAgendar('Corte de cabello mujer')">
+              <span class="iconito">✂️</span><span class="texto">Corte de cabello mujer</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Corte de cabello hombre')">
+              <span class="iconito">✂️</span><span class="texto">Corte de cabello hombre</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Cepillado / Brushing')">
+              <span class="iconito">💨</span><span class="texto">Cepillado / Brushing</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Hidratación capilar')">
+              <span class="iconito">💧</span><span class="texto">Hidratación capilar</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Color / Tinte raíz')">
+              <span class="iconito">🎨</span><span class="texto">Color / Tinte raíz</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DEPILACIÓN CERA -->
+  <div id="overlay-cera" class="modal-overlay">
+    <div class="modal-unas">
+      <div class="modal-header">
+        <h3>Depilación con Cera</h3>
+        <button class="modal-close" onclick="cerrarServicios('cera')">✕</button>
+      </div>
+      <p class="modal-subtitle">Selecciona la zona que deseas depilar con cera 🕯️</p>
+      <div class="lista-unas">
+        <div class="grupo-unas">
+          <div class="grupo-body" style="display:flex;">
+            <button class="btn-servicio-unas" onclick="irAgendar('Depilación con cera cejas')">
+              <span class="iconito">👁️</span><span class="texto">Cejas</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Depilación con cera bozo')">
+              <span class="iconito">👄</span><span class="texto">Bozo</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Depilación con cera axilas')">
+              <span class="iconito">✨</span><span class="texto">Axilas</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Depilación con cera piernas completas')">
+              <span class="iconito">🦵</span><span class="texto">Piernas completas</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Depilación con cera bikini')">
+              <span class="iconito">🌸</span><span class="texto">Zona bikini</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DEPILACIÓN GILLETTE -->
+  <div id="overlay-gillette" class="modal-overlay">
+    <div class="modal-unas">
+      <div class="modal-header">
+        <h3>Depilación Gillette</h3>
+        <button class="modal-close" onclick="cerrarServicios('gillette')">✕</button>
+      </div>
+      <p class="modal-subtitle">Selecciona el servicio de depilación Gillette 🪒</p>
+      <div class="lista-unas">
+        <div class="grupo-unas">
+          <div class="grupo-body" style="display:flex;">
+            <button class="btn-servicio-unas" onclick="irAgendar('Depilación Gillette piernas')">
+              <span class="iconito">🦵</span><span class="texto">Piernas</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Depilación Gillette axilas')">
+              <span class="iconito">✨</span><span class="texto">Axilas</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Depilación Gillette bikini')">
+              <span class="iconito">🌸</span><span class="texto">Zona bikini</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PESTAÑAS -->
+  <div id="overlay-pestanas" class="modal-overlay">
+    <div class="modal-unas">
+      <div class="modal-header">
+        <h3>Servicios de Pestañas</h3>
+        <button class="modal-close" onclick="cerrarServicios('pestanas')">✕</button>
+      </div>
+      <p class="modal-subtitle">Resalta tu mirada con nuestros servicios de pestañas 👁️</p>
+      <div class="lista-unas">
+        <div class="grupo-unas">
+          <div class="grupo-body" style="display:flex;">
+            <button class="btn-servicio-unas" onclick="irAgendar('Lifting de pestañas')">
+              <span class="iconito">✨</span><span class="texto">Lifting de pestañas</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Pestañas pelo a pelo')">
+              <span class="iconito">💖</span><span class="texto">Extensiones pelo a pelo</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Pestañas volumen 3D')">
+              <span class="iconito">💖</span><span class="texto">Extensiones volumen 3D</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Retoque de pestañas')">
+              <span class="iconito">🔁</span><span class="texto">Retoque de pestañas</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL MASAJES -->
+  <div id="overlay-masajes" class="modal-overlay">
+    <div class="modal-unas">
+      <div class="modal-header">
+        <h3>Servicios de Masajes</h3>
+        <button class="modal-close" onclick="cerrarServicios('masajes')">✕</button>
+      </div>
+      <p class="modal-subtitle">Relájate y regálate un momento solo para ti 💆‍♀️</p>
+      <div class="lista-unas">
+        <div class="grupo-unas">
+          <div class="grupo-body" style="display:flex;">
+            <button class="btn-servicio-unas" onclick="irAgendar('Masaje relajante cuerpo completo')">
+              <span class="iconito">😌</span><span class="texto">Masaje relajante cuerpo completo</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Masaje descontracturante')">
+              <span class="iconito">💪</span><span class="texto">Masaje descontracturante</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Masaje reductivo')">
+              <span class="iconito">🔥</span><span class="texto">Masaje reductivo</span><span class="flecha">➜</span>
+            </button>
+            <button class="btn-servicio-unas" onclick="irAgendar('Masaje de espalda y cuello')">
+              <span class="iconito">💆‍♀️</span><span class="texto">Masaje de espalda y cuello</span><span class="flecha">➜</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -953,19 +1099,22 @@
       }, 4000);
     }
 
-    // Modal servicios uñas
-    function abrirServiciosUnas() {
-      const overlay = document.getElementById("overlay-unas");
+    // Abrir / cerrar modales por tipo
+    function abrirServicios(tipo) {
+      const overlay = document.getElementById("overlay-" + tipo);
       if (overlay) overlay.style.display = "flex";
     }
-    function cerrarServiciosUnas() {
-      const overlay = document.getElementById("overlay-unas");
+    function cerrarServicios(tipo) {
+      const overlay = document.getElementById("overlay-" + tipo);
       if (overlay) overlay.style.display = "none";
     }
-    function irAgendarUnas(servicio) {
+
+    // Ir a agendar con servicio preseleccionado
+    function irAgendar(servicio) {
       window.location.href = "agendar.html?servicio=" + encodeURIComponent(servicio);
     }
 
+    // Abrir/cerrar grupos dentro del modal de uñas
     function toggleGrupo(boton) {
       boton.classList.toggle("abierto");
       const body = boton.nextElementSibling;
