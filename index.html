@@ -555,60 +555,115 @@
       transform:scale(1.07);
     }
 
-    /* CHATBOT MEJORADO */
-    .chatbot-bubble {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      background: #d63384;
-      color: white;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-      z-index: 999;
-      transition: .25s;
-    }
-    .chatbot-bubble:hover { transform: scale(1.13); }
+   /* CHATBOT NUEVO */
+.chatbot-bubble {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: linear-gradient(135deg, #d63384, #ff85c3);
+  color: white;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  z-index: 999;
+  transition: transform .25s, box-shadow .25s;
+}
+.chatbot-bubble:hover {
+  transform: scale(1.12);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+}
 
-    .chatbot-window {
-      position: fixed;
-      bottom: 160px;
-      right: 20px;
-      width: 290px;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      padding: 1rem;
-      display: none;
-      z-index: 999;
-      animation: fadeIn .3s ease;
-    }
-    .chatbot-header {
-      font-weight: 700;
-      color: #d63384;
-      font-size: 1.1rem;
-      margin-bottom: .7rem;
-      text-align: center;
-    }
-    .chatbot-btn {
-      width: 100%;
-      padding: .7rem;
-      margin-bottom: .5rem;
-      border-radius: 12px;
-      border: none;
-      background: #ffe6f2;
-      color: #d63384;
-      font-weight: 600;
-      cursor: pointer;
-      transition: .2s;
-    }
-    .chatbot-btn:hover { background: #ffd7ec; }
+.chatbot-window {
+  position: fixed;
+  bottom: 165px;
+  right: 20px;
+  width: 310px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.25);
+  padding: 0;
+  display: none;
+  z-index: 999;
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+
+/* Header del chatbot */
+.chatbot-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #d63384, #ff9cd4);
+  color: #fff;
+  padding: 0.8rem 0.9rem;
+}
+.chatbot-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.chatbot-top-text {
+  display: flex;
+  flex-direction: column;
+}
+.chatbot-top-text strong {
+  font-size: 0.9rem;
+}
+.chatbot-top-text span {
+  font-size: 0.75rem;
+}
+.chatbot-close {
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* Cuerpo del chatbot */
+.chatbot-body {
+  padding: 0.85rem 0.95rem 1rem;
+  background: #fff;
+}
+.chatbot-body p {
+  margin-bottom: 0.6rem;
+  color: #555;
+}
+
+/* Botones dentro del chatbot */
+.chatbot-btn {
+  width: 100%;
+  padding: .65rem;
+  margin-bottom: .45rem;
+  border-radius: 12px;
+  border: none;
+  background: #ffe6f2;
+  color: #d63384;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .18s;
+  text-align: left;
+}
+.chatbot-btn span.iconito {
+  margin-right: 0.35rem;
+}
+.chatbot-btn:hover {
+  background: #ffd7ec;
+  transform: translateY(-1px);
+}
+
 
     /* ANIMACIONES */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -1127,28 +1182,46 @@
     <span>Chatea con nosotras</span>
   </a>
 
-  <!-- CHATBOT -->
-  <div class="chatbot-bubble" onclick="toggleChat()">💬</div>
+<!-- CHATBOT NUEVO -->
+<div class="chatbot-bubble" onclick="toggleChat()">
+  💖
+</div>
 
-  <div class="chatbot-window" id="chatWindow">
-    <div class="chatbot-header">Hola 👋 ¿En qué te ayudo?</div>
+<div class="chatbot-window" id="chatWindow">
+  <div class="chatbot-top">
+    <div class="chatbot-avatar">G</div>
+    <div class="chatbot-top-text">
+      <strong>Asistente Glamourus</strong>
+      <span>Resolvemos tus dudas en segundos ✨</span>
+    </div>
+    <button class="chatbot-close" onclick="toggleChat()">✕</button>
+  </div>
 
-    <button class="chatbot-btn" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'});">
-      💅 Ver servicios
+  <div class="chatbot-body">
+    <p>¿Qué quieres hacer hoy?</p>
+
+    <button class="chatbot-btn"
+      onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'});">
+      <span class="iconito">💅</span> Ver todos los servicios
     </button>
 
-    <button class="chatbot-btn" onclick="window.location.href='agendar.html'">
-      📅 Agendar cita online
+    <button class="chatbot-btn"
+      onclick="window.location.href='agendar.html'">
+      <span class="iconito">📅</span> Agendar cita online
     </button>
 
-    <button class="chatbot-btn" onclick="window.open('https://wa.me/593987356186','_blank')">
-      💬 Escribir por WhatsApp
+    <button class="chatbot-btn"
+      onclick="window.open('https://wa.me/593987356186','_blank')">
+      <span class="iconito">💬</span> Escribir por WhatsApp
     </button>
 
-    <button class="chatbot-btn" onclick="window.open('https://www.google.com/maps?q=0%C2%B005%2722.7%22S+78%C2%B028%2721.2%22W','_blank')">
-      📍 Ver ubicación
+    <button class="chatbot-btn"
+      onclick="window.open('https://www.google.com/maps?q=0%C2%B005%2722.7%22S+78%C2%B028%2721.2%22W','_blank')">
+      <span class="iconito">📍</span> Ver ubicación en el mapa
     </button>
   </div>
+</div>
+
 
   <!-- BOTÓN FLOTANTE AGENDAR AHORA -->
   <div class="agendar-float" onclick="window.location.href='agendar.html'">
