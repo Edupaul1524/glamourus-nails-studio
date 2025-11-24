@@ -647,6 +647,50 @@
     <p>Conoce nuestras principales áreas de atención, pensadas para resaltar tu belleza y bienestar 🌸</p>
   </section>
 
+   <!-- TEST DE ESTILO -->
+  <section style="max-width:900px; margin:2.5rem auto; text-align:center;">
+    <h2 style="color:#d63384; font-size:1.7rem; margin-bottom:0.6rem;">¿Qué estilo de uñas va contigo? 💅✨</h2>
+    <p style="color:#666; margin-bottom:1.5rem;">Haz clic y agenda según tu estilo</p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+
+      <button class="opcion-test" onclick="window.location.href='agendar.html?servicio=UÑAS ACRILICAS  PERMANENTE'">
+        ⭐ Elegante
+      </button>
+
+      <button class="opcion-test" onclick="window.location.href='agendar.html?servicio=MANICURE NORMAL'">
+        🌸 Natural
+      </button>
+
+      <button class="opcion-test" onclick="window.location.href='agendar.html?servicio=UÑAS ESCULPIDAS PERMANENTE'">
+        🔥 Atrevida
+      </button>
+
+      <button class="opcion-test" onclick="window.location.href='agendar.html?servicio=BABY BOOMER CON ACRILICO UNA UÑA'">
+        💗 Romántica
+      </button>
+
+    </div>
+  </section>
+
+  <style>
+    .opcion-test {
+      background:#ffe6f2;
+      border:none;
+      padding:0.9rem 1.3rem;
+      border-radius:18px;
+      font-size:1rem;
+      font-weight:600;
+      color:#d63384;
+      cursor:pointer;
+      transition:.2s;
+    }
+    .opcion-test:hover {
+      background:#ffd6ea;
+      transform:scale(1.07);
+    }
+  </style>
+  
   <!-- CATEGORÍAS -->
   <div class="catalogo">
     <div class="categoria" onclick="abrirServicios('cabello')">
@@ -1085,30 +1129,96 @@
     <span>Chatea con nosotras</span>
   </a>
 
-  <!-- CHATBOT -->
-  <div class="chatbot-bubble" onclick="toggleChat()">💬</div>
+<!-- CHATBOT MEJORADO -->
+<style>
+  .chatbot-bubble {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: #d63384;
+    color: white;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    z-index: 999;
+    transition: .25s;
+  }
+  .chatbot-bubble:hover { transform: scale(1.13); }
 
-  <div class="chatbot-window" id="chatWindow">
-    <div class="chatbot-header">Hola 👋 soy tu asistente</div>
+  .chatbot-window {
+    position: fixed;
+    bottom: 160px;
+    right: 20px;
+    width: 290px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding: 1rem;
+    display: none;
+    z-index: 999;
+    animation: fadeIn .3s ease;
+  }
 
-    <button class="chatbot-btn" onclick="window.location.href='#servicios'">
-      Ver servicios
-    </button>
+  @keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
 
-    <button class="chatbot-btn" onclick="window.location.href='agendar.html'">
-      Agendar cita online
-    </button>
+  .chatbot-header {
+    font-weight: 700;
+    color: #d63384;
+    font-size: 1.1rem;
+    margin-bottom: .7rem;
+    text-align: center;
+  }
 
-    <button class="chatbot-btn" onclick="window.open('https://wa.me/593987356186','_blank')">
-      Escribir por WhatsApp
-    </button>
+  .chatbot-btn {
+    width: 100%;
+    padding: .7rem;
+    margin-bottom: .5rem;
+    border-radius: 12px;
+    border: none;
+    background: #ffe6f2;
+    color: #d63384;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+  }
+  .chatbot-btn:hover { background: #ffd7ec; }
+</style>
 
-    <button class="chatbot-btn" onclick="window.open('https://www.google.com/maps?q=0%C2%B005%2722.7%22S+78%C2%B028%2721.2%22W','_blank')">
-      Ver ubicación
-    </button>
-  </div>
+<div class="chatbot-bubble" onclick="toggleChat()">💬</div>
 
-  <script>
+<div class="chatbot-window" id="chatWindow">
+  <div class="chatbot-header">Hola 👋 ¿En qué te ayudo?</div>
+
+  <button class="chatbot-btn" onclick="window.location.href='#servicios'">
+    💅 Ver servicios
+  </button>
+
+  <button class="chatbot-btn" onclick="window.location.href='agendar.html'">
+    📅 Agendar cita online
+  </button>
+
+  <button class="chatbot-btn" onclick="window.open('https://wa.me/593987356186','_blank')">
+    💬 Escribir por WhatsApp
+  </button>
+
+  <button class="chatbot-btn" onclick="window.open('https://www.google.com/maps?q=0%C2%B005%2722.7%22S+78%C2%B028%2721.2%22W','_blank')">
+    📍 Ver ubicación
+  </button>
+</div>
+
+<script>
+  function toggleChat() {
+    const chat = document.getElementById("chatWindow");
+    chat.style.display = chat.style.display === "block" ? "none" : "block";
+  }
+</script>
+  
     // Slider automático testimonios
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
@@ -1177,5 +1287,32 @@
       chat.style.display = chat.style.display === "block" ? "none" : "block";
     }
   </script>
+    <!-- BOTÓN FLOTANTE AGENDAR AHORA -->
+<style>
+  .agendar-float {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #d63384;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 999;
+    cursor: pointer;
+    transition: .2s;
+  }
+  .agendar-float:hover {
+    background: #b02a6e;
+    transform: scale(1.05);
+  }
+</style>
+
+<div class="agendar-float" onclick="window.location.href='agendar.html'">
+  💅 Agendar Ahora
+</div>
+      
 </body>
 </html>
