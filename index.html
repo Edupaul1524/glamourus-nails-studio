@@ -6,7 +6,7 @@
   <title>GLAMOURUS NAILS STUDIO</title>
 
   <!-- Tipografía elegante -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Great Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -193,6 +193,23 @@
     .categoria:hover { transform: translateY(-5px); box-shadow: 0 4px 16px rgba(0,0,0,.12); }
     .categoria h2 { color: var(--rosa); font-size: 1.3rem; margin-bottom: 0; }
 
+    /* TEST DE ESTILO */
+    .opcion-test {
+      background:#ffe6f2;
+      border:none;
+      padding:0.9rem 1.3rem;
+      border-radius:18px;
+      font-size:1rem;
+      font-weight:600;
+      color:#d63384;
+      cursor:pointer;
+      transition:.2s;
+    }
+    .opcion-test:hover {
+      background:#ffd6ea;
+      transform:scale(1.07);
+    }
+
     /* POR QUÉ ELEGIRNOS */
     .por-que {
       max-width: 900px;
@@ -310,7 +327,7 @@
     .contacto p { margin: 0.5rem 0; }
     .contacto a { color: var(--rosa-osc); text-decoration: none; font-weight: 600; }
 
-    /* BLOQUE INTERNO (ADMIN / MANICURISTAS) */
+    /* BLOQUE INTERNO */
     .bloque-interno {
       max-width: 900px;
       margin: 1.5rem auto 2.5rem;
@@ -400,7 +417,7 @@
       display: block;
     }
 
-    /* MODALES DE SERVICIOS */
+    /* MODALES DE SERVICIOS (comparten estilo) */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -443,20 +460,17 @@
       color: #777;
       margin-bottom: 1rem;
     }
-
     .lista-unas {
       display: flex;
       flex-direction: column;
       gap: 0.9rem;
     }
-
     .grupo-unas {
       border-radius: 16px;
       background: #fff9fc;
       border: 1px solid #f3c8df;
       padding: 0.5rem 0.7rem 0.7rem;
     }
-
     .grupo-titulo {
       width: 100%;
       background: transparent;
@@ -470,7 +484,9 @@
       cursor: pointer;
       font-size: 0.9rem;
     }
-
+    .grupo-titulo span.icon-seccion {
+      margin-right: 0.35rem;
+    }
     .grupo-titulo span.flechita {
       font-size: 0.9rem;
       color: #d63384;
@@ -479,14 +495,12 @@
     .grupo-titulo.abierto span.flechita {
       transform: rotate(90deg);
     }
-
     .grupo-body {
       margin-top: 0.4rem;
       display: none;
       flex-direction: column;
       gap: 0.35rem;
     }
-
     .btn-servicio-unas {
       display: flex;
       align-items: center;
@@ -502,6 +516,10 @@
       transition: 0.18s ease;
       font-weight: 500;
     }
+    .btn-servicio-unas span.iconito {
+      font-size: 0.95rem;
+      margin-right: 0.25rem;
+    }
     .btn-servicio-unas span.texto {
       flex: 1;
       text-align: left;
@@ -515,6 +533,160 @@
       border-color: var(--rosa);
       transform: translateY(-1px);
       box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+    }
+
+    /* CHATBOT NUEVO */
+    .chatbot-bubble {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: linear-gradient(135deg, #d63384, #ff85c3);
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      z-index: 999;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .chatbot-bubble:hover {
+      transform: scale(1.12);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+    }
+
+    .chatbot-window {
+      position: fixed;
+      bottom: 165px;
+      right: 20px;
+      width: 310px;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.25);
+      padding: 0;
+      display: none;
+      z-index: 999;
+      overflow: hidden;
+      font-size: 0.9rem;
+    }
+
+    .chatbot-top {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #d63384, #ff9cd4);
+      color: #fff;
+      padding: 0.8rem 0.9rem;
+    }
+    .chatbot-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .chatbot-top-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .chatbot-top-text strong {
+      font-size: 0.9rem;
+    }
+    .chatbot-top-text span {
+      font-size: 0.75rem;
+    }
+    .chatbot-close {
+      margin-left: auto;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .chatbot-body {
+      padding: 0.85rem 0.95rem 1rem;
+      background: #fff;
+    }
+    .chatbot-messages {
+      max-height: 180px;
+      overflow-y: auto;
+      padding-right: 4px;
+      margin-bottom: 0.6rem;
+    }
+    .chatbot-message {
+      margin-bottom: 0.35rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      max-width: 95%;
+    }
+    .msg-bot {
+      background: #ffe6f2;
+      color: #444;
+      border-bottom-left-radius: 2px;
+    }
+    .msg-user {
+      background: #e5f7ff;
+      color: #333;
+      margin-left: auto;
+      border-bottom-right-radius: 2px;
+    }
+
+    .chatbot-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 0.3rem;
+    }
+    .chatbot-input {
+      padding: 0.45rem 0.6rem;
+      border-radius: 10px;
+      border: 1px solid #e4c5d8;
+      font-size: 0.82rem;
+      font-family: inherit;
+    }
+    .chatbot-btn-main {
+      border: none;
+      padding: 0.5rem 0.7rem;
+      border-radius: 999px;
+      background: #d63384;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .chatbot-btn-main:hover {
+      background: #b02a6e;
+    }
+
+    .chatbot-quick-btn {
+      width: 100%;
+      padding: .55rem;
+      margin-bottom: .35rem;
+      border-radius: 12px;
+      border: none;
+      background: #ffe6f2;
+      color: #d63384;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .18s;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+    .chatbot-quick-btn span.iconito {
+      margin-right: 0.3rem;
+    }
+    .chatbot-quick-btn:hover {
+      background: #ffd7ec;
+      transform: translateY(-1px);
     }
 
     /* BOTÓN FLOTANTE AGENDAR AHORA */
@@ -537,133 +709,6 @@
       background: #b02a6e;
       transform: scale(1.05);
     }
-
-    /* BOTONES TEST ESTILO */
-    .opcion-test {
-      background:#ffe6f2;
-      border:none;
-      padding:0.9rem 1.3rem;
-      border-radius:18px;
-      font-size:1rem;
-      font-weight:600;
-      color:#d63384;
-      cursor:pointer;
-      transition:.2s;
-    }
-    .opcion-test:hover {
-      background:#ffd6ea;
-      transform:scale(1.07);
-    }
-
-   /* CHATBOT NUEVO */
-.chatbot-bubble {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  background: linear-gradient(135deg, #d63384, #ff85c3);
-  color: white;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  z-index: 999;
-  transition: transform .25s, box-shadow .25s;
-}
-.chatbot-bubble:hover {
-  transform: scale(1.12);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
-}
-
-.chatbot-window {
-  position: fixed;
-  bottom: 165px;
-  right: 20px;
-  width: 310px;
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 14px 32px rgba(0,0,0,0.25);
-  padding: 0;
-  display: none;
-  z-index: 999;
-  overflow: hidden;
-  font-size: 0.9rem;
-}
-
-/* Header del chatbot */
-.chatbot-top {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: linear-gradient(135deg, #d63384, #ff9cd4);
-  color: #fff;
-  padding: 0.8rem 0.9rem;
-}
-.chatbot-avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-}
-.chatbot-top-text {
-  display: flex;
-  flex-direction: column;
-}
-.chatbot-top-text strong {
-  font-size: 0.9rem;
-}
-.chatbot-top-text span {
-  font-size: 0.75rem;
-}
-.chatbot-close {
-  margin-left: auto;
-  border: none;
-  background: transparent;
-  color: #fff;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-
-/* Cuerpo del chatbot */
-.chatbot-body {
-  padding: 0.85rem 0.95rem 1rem;
-  background: #fff;
-}
-.chatbot-body p {
-  margin-bottom: 0.6rem;
-  color: #555;
-}
-
-/* Botones dentro del chatbot */
-.chatbot-btn {
-  width: 100%;
-  padding: .65rem;
-  margin-bottom: .45rem;
-  border-radius: 12px;
-  border: none;
-  background: #ffe6f2;
-  color: #d63384;
-  font-weight: 600;
-  cursor: pointer;
-  transition: .18s;
-  text-align: left;
-}
-.chatbot-btn span.iconito {
-  margin-right: 0.35rem;
-}
-.chatbot-btn:hover {
-  background: #ffd7ec;
-  transform: translateY(-1px);
-}
-
 
     /* ANIMACIONES */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -734,16 +779,16 @@
     <p style="color:#666; margin-bottom:1.5rem;">Haz clic y agenda según tu estilo</p>
 
     <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
-      <button class="opcion-test" onclick="irAgendar('UÑAS ACRILICAS  PERMANENTE')">
+      <button class="opcion-test" onclick="window.location.href='agendar.html?servicio=UÑAS ACRILICAS  PERMANENTE'">
         ⭐ Elegante
       </button>
-      <button class="opcion-test" onclick="irAgendar('MANICURE NORMAL')">
+      <button class="opcion-test" onclick="window.location.href='agendar.html?servicio=MANICURE NORMAL'">
         🌸 Natural
       </button>
-      <button class="opcion-test" onclick="irAgendar('UÑAS ESCULPIDAS PERMANENTE')">
+      <button class="opcion-test" onclick="window.location.href='agendar.html?servicio=UÑAS ESCULPIDAS PERMANENTE'">
         🔥 Atrevida
       </button>
-      <button class="opcion-test" onclick="irAgendar('BABY BOOMER CON ACRILICO UNA UÑA')">
+      <button class="opcion-test" onclick="window.location.href='agendar.html?servicio=BABY BOOMER CON ACRILICO UNA UÑA'">
         💗 Romántica
       </button>
     </div>
@@ -771,8 +816,7 @@
     </div>
   </div>
 
-  <!-- MODALES -->
-  <!-- UÑAS -->
+  <!-- MODAL UÑAS -->
   <div id="overlay-unas" class="modal-overlay">
     <div class="modal-unas">
       <div class="modal-header">
@@ -787,21 +831,21 @@
         <!-- MANICURE -->
         <div class="grupo-unas">
           <button class="grupo-titulo" onclick="toggleGrupo(this)">
-            <span>💅 Manicure</span>
+            <span><span class="icon-seccion">💅</span>Manicure</span>
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
             <button class="btn-servicio-unas" onclick="irAgendar('MANICURE EXPRESS LIMPIEZA O PINTURA')">
-              <span class="texto">MANICURE EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
+              <span class="iconito">✨</span><span class="texto">MANICURE EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('MANICURE HOMBRE')">
-              <span class="texto">MANICURE HOMBRE</span><span class="flecha">➜</span>
+              <span class="iconito">✨</span><span class="texto">MANICURE HOMBRE</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('MANICURE NORMAL')">
-              <span class="texto">MANICURE NORMAL</span><span class="flecha">➜</span>
+              <span class="iconito">✨</span><span class="texto">MANICURE NORMAL</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('MANICURE PERMANENTE')">
-              <span class="texto">MANICURE PERMANENTE</span><span class="flecha">➜</span>
+              <span class="iconito">✨</span><span class="texto">MANICURE PERMANENTE</span><span class="flecha">➜</span>
             </button>
           </div>
         </div>
@@ -809,18 +853,18 @@
         <!-- MANICURE + PEDICURE -->
         <div class="grupo-unas">
           <button class="grupo-titulo" onclick="toggleGrupo(this)">
-            <span>💅 Manicure + Pedicure</span>
+            <span><span class="icon-seccion">💅</span>Manicure + Pedicure</span>
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
             <button class="btn-servicio-unas" onclick="irAgendar('MANICURE NORMAL + PEDICURE NORMAL')">
-              <span class="texto">MANICURE NORMAL + PEDICURE NORMAL</span><span class="flecha">➜</span>
+              <span class="iconito">🦶</span><span class="texto">MANICURE NORMAL + PEDICURE NORMAL</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('MANICURE NORMAL + PEDICURE PERMANENTE')">
-              <span class="texto">MANICURE NORMAL + PEDICURE PERMANENTE</span><span class="flecha">➜</span>
+              <span class="iconito">🦶</span><span class="texto">MANICURE NORMAL + PEDICURE PERMANENTE</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('MANICURE PERMANENTE + PEDICURE NORMAL')">
-              <span class="texto">MANICURE PERMANENTE + PEDICURE NORMAL</span><span class="flecha">➜</span>
+              <span class="iconito">🦶</span><span class="texto">MANICURE PERMANENTE + PEDICURE NORMAL</span><span class="flecha">➜</span>
             </button>
           </div>
         </div>
@@ -828,21 +872,21 @@
         <!-- PEDICURE -->
         <div class="grupo-unas">
           <button class="grupo-titulo" onclick="toggleGrupo(this)">
-            <span>🦶 Pedicure</span>
+            <span><span class="icon-seccion">🦶</span>Pedicure</span>
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
             <button class="btn-servicio-unas" onclick="irAgendar('PEDICURE  EXPRESS LIMPIEZA O PINTURA')">
-              <span class="texto">PEDICURE  EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
+              <span class="iconito">🦶</span><span class="texto">PEDICURE  EXPRESS LIMPIEZA O PINTURA</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('PEDICURE HOMBRE')">
-              <span class="texto">PEDICURE HOMBRE</span><span class="flecha">➜</span>
+              <span class="iconito">🦶</span><span class="texto">PEDICURE HOMBRE</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('PEDICURE NORMAL')">
-              <span class="texto">PEDICURE NORMAL</span><span class="flecha">➜</span>
+              <span class="iconito">🦶</span><span class="texto">PEDICURE NORMAL</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('PEDICURE PERMANENTE')">
-              <span class="texto">PEDICURE PERMANENTE</span><span class="flecha">➜</span>
+              <span class="iconito">🦶</span><span class="texto">PEDICURE PERMANENTE</span><span class="flecha">➜</span>
             </button>
           </div>
         </div>
@@ -850,21 +894,21 @@
         <!-- UÑAS ACRÍLICAS -->
         <div class="grupo-unas">
           <button class="grupo-titulo" onclick="toggleGrupo(this)">
-            <span>💎 Uñas acrílicas</span>
+            <span><span class="icon-seccion">💎</span>Uñas acrílicas</span>
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
             <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ACRILICAS BABY BOOMER')">
-              <span class="texto">UÑAS ACRILICAS BABY BOOMER</span><span class="flecha">➜</span>
+              <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS BABY BOOMER</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ACRILICAS COVER')">
-              <span class="texto">UÑAS ACRILICAS COVER</span><span class="flecha">➜</span>
+              <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS COVER</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ACRILICAS  NORMAL')">
-              <span class="texto">UÑAS ACRILICAS  NORMAL</span><span class="flecha">➜</span>
+              <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS  NORMAL</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ACRILICAS  PERMANENTE')">
-              <span class="texto">UÑAS ACRILICAS  PERMANENTE</span><span class="flecha">➜</span>
+              <span class="iconito">💎</span><span class="texto">UÑAS ACRILICAS  PERMANENTE</span><span class="flecha">➜</span>
             </button>
           </div>
         </div>
@@ -872,21 +916,21 @@
         <!-- UÑAS ESCULPIDAS -->
         <div class="grupo-unas">
           <button class="grupo-titulo" onclick="toggleGrupo(this)">
-            <span>🎨 Uñas esculpidas</span>
+            <span><span class="icon-seccion">🎨</span>Uñas esculpidas</span>
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
             <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ESCULPIDAS BABY BOOMER')">
-              <span class="texto">UÑAS ESCULPIDAS BABY BOOMER</span><span class="flecha">➜</span>
+              <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS BABY BOOMER</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ESCULPIDAS COVER')">
-              <span class="texto">UÑAS ESCULPIDAS COVER</span><span class="flecha">➜</span>
+              <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS COVER</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ESCULPIDAS  NORMAL')">
-              <span class="texto">UÑAS ESCULPIDAS  NORMAL</span><span class="flecha">➜</span>
+              <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS  NORMAL</span><span class="flecha">➜</span>
             </button>
             <button class="btn-servicio-unas" onclick="irAgendar('UÑAS ESCULPIDAS PERMANENTE')">
-              <span class="texto">UÑAS ESCULPIDAS PERMANENTE</span><span class="flecha">➜</span>
+              <span class="iconito">🎨</span><span class="texto">UÑAS ESCULPIDAS PERMANENTE</span><span class="flecha">➜</span>
             </button>
           </div>
         </div>
@@ -894,410 +938,12 @@
         <!-- RELLENOS Y RETIROS -->
         <div class="grupo-unas">
           <button class="grupo-titulo" onclick="toggleGrupo(this)">
-            <span>🔁 Rellenos y retiros</span>
+            <span><span class="icon-seccion">🔁</span>Rellenos y retiros</span>
             <span class="flechita">▸</span>
           </button>
           <div class="grupo-body">
             <button class="btn-servicio-unas" onclick="irAgendar('RELLENO DE ACRILICO CON ESMALTE PERMANENTE')">
-              <span class="texto">RELLENO DE ACRILICO CON ESMALTE PERMANENTE</span><span class="flecha">➜</span>
+              <span class="iconito">🔁</span><span class="texto">RELLENO DE ACRILICO CON ESMALTE PERMANENTE</span><span class="flecha">➜</span>
             </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('RELLENO DE UÑAS')">
-              <span class="texto">RELLENO DE UÑAS</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('RETIRO DE ACRILICO')">
-              <span class="texto">RETIRO DE ACRILICO</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('RETIRO DE ESMALTE PERMANENTE')">
-              <span class="texto">RETIRO DE ESMALTE PERMANENTE</span><span class="flecha">➜</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- SERVICIOS POR UNA UÑA -->
-        <div class="grupo-unas">
-          <button class="grupo-titulo" onclick="toggleGrupo(this)">
-            <span>⭐ Servicios por una uña</span>
-            <span class="flechita">▸</span>
-          </button>
-          <div class="grupo-body">
-            <button class="btn-servicio-unas" onclick="irAgendar('ARREGLO DE UNA UÑA')">
-              <span class="texto">ARREGLO DE UNA UÑA</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('BABY BOOMER CON ACRILICO UNA UÑA')">
-              <span class="texto">BABY BOOMER CON ACRILICO UNA UÑA</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('BAÑO DE ACRILICO PERMANENTE')">
-              <span class="texto">BAÑO DE ACRILICO PERMANENTE</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('BAÑO DE ACRILICO TRADICIONAL')">
-              <span class="texto">BAÑO DE ACRILICO TRADICIONAL</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('ENCAPSULADO DE UNA UÑA')">
-              <span class="texto">ENCAPSULADO DE UNA UÑA</span><span class="flecha">➜</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CABELLO -->
-  <div id="overlay-cabello" class="modal-overlay">
-    <div class="modal-unas">
-      <div class="modal-header">
-        <h3>Servicios de Cabello</h3>
-        <button class="modal-close" onclick="cerrarServicios('cabello')">✕</button>
-      </div>
-      <p class="modal-subtitle">Elige el servicio de cabello que deseas 💇‍♀️</p>
-      <div class="lista-unas">
-        <div class="grupo-unas">
-          <div class="grupo-body" style="display:flex; flex-direction:column; gap:0.5rem;">
-            <button class="btn-servicio-unas" onclick="irAgendar('Corte de cabello mujer')">
-              <span class="texto">Corte de cabello mujer</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Corte de cabello hombre')">
-              <span class="texto">Corte de cabello hombre</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Cepillado / Brushing')">
-              <span class="texto">Cepillado / Brushing</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Hidratación capilar')">
-              <span class="texto">Hidratación capilar</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Color / Tinte raíz')">
-              <span class="texto">Color / Tinte raíz</span><span class="flecha">➜</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DEPILACIÓN CERA -->
-  <div id="overlay-cera" class="modal-overlay">
-    <div class="modal-unas">
-      <div class="modal-header">
-        <h3>Depilación con Cera</h3>
-        <button class="modal-close" onclick="cerrarServicios('cera')">✕</button>
-      </div>
-      <p class="modal-subtitle">Selecciona la zona que deseas depilar con cera 🕯️</p>
-      <div class="lista-unas">
-        <div class="grupo-unas">
-          <div class="grupo-body" style="display:flex; flex-direction:column; gap:0.5rem;">
-            <button class="btn-servicio-unas" onclick="irAgendar('Depilación con cera cejas')">
-              <span class="texto">Cejas</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Depilación con cera bozo')">
-              <span class="texto">Bozo</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Depilación con cera axilas')">
-              <span class="texto">Axilas</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Depilación con cera piernas completas')">
-              <span class="texto">Piernas completas</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Depilación con cera bikini')">
-              <span class="texto">Zona bikini</span><span class="flecha">➜</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DEPILACIÓN GILLETTE -->
-  <div id="overlay-gillette" class="modal-overlay">
-    <div class="modal-unas">
-      <div class="modal-header">
-        <h3>Depilación Gillette</h3>
-        <button class="modal-close" onclick="cerrarServicios('gillette')">✕</button>
-      </div>
-      <p class="modal-subtitle">Selecciona el servicio de depilación Gillette 🪒</p>
-      <div class="lista-unas">
-        <div class="grupo-unas">
-          <div class="grupo-body" style="display:flex; flex-direction:column; gap:0.5rem;">
-            <button class="btn-servicio-unas" onclick="irAgendar('Depilación Gillette piernas')">
-              <span class="texto">Piernas</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Depilación Gillette axilas')">
-              <span class="texto">Axilas</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Depilación Gillette bikini')">
-              <span class="texto">Zona bikini</span><span class="flecha">➜</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PESTAÑAS -->
-  <div id="overlay-pestanas" class="modal-overlay">
-    <div class="modal-unas">
-      <div class="modal-header">
-        <h3>Servicios de Pestañas</h3>
-        <button class="modal-close" onclick="cerrarServicios('pestanas')">✕</button>
-      </div>
-      <p class="modal-subtitle">Resalta tu mirada con nuestros servicios de pestañas 👁️</p>
-      <div class="lista-unas">
-        <div class="grupo-unas">
-          <div class="grupo-body" style="display:flex; flex-direction:column; gap:0.5rem;">
-            <button class="btn-servicio-unas" onclick="irAgendar('Lifting de pestañas')">
-              <span class="texto">Lifting de pestañas</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Pestañas pelo a pelo')">
-              <span class="texto">Extensiones pelo a pelo</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Pestañas volumen 3D')">
-              <span class="texto">Extensiones volumen 3D</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Retoque de pestañas')">
-              <span class="texto">Retoque de pestañas</span><span class="flecha">➜</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MASAJES -->
-  <div id="overlay-masajes" class="modal-overlay">
-    <div class="modal-unas">
-      <div class="modal-header">
-        <h3>Servicios de Masajes</h3>
-        <button class="modal-close" onclick="cerrarServicios('masajes')">✕</button>
-      </div>
-      <p class="modal-subtitle">Relájate y regálate un momento solo para ti 💆‍♀️</p>
-      <div class="lista-unas">
-        <div class="grupo-unas">
-          <div class="grupo-body" style="display:flex; flex-direction:column; gap:0.5rem;">
-            <button class="btn-servicio-unas" onclick="irAgendar('Masaje relajante cuerpo completo')">
-              <span class="texto">Masaje relajante cuerpo completo</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Masaje descontracturante')">
-              <span class="texto">Masaje descontracturante</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Masaje reductivo')">
-              <span class="texto">Masaje reductivo</span><span class="flecha">➜</span>
-            </button>
-            <button class="btn-servicio-unas" onclick="irAgendar('Masaje de espalda y cuello')">
-              <span class="texto">Masaje de espalda y cuello</span><span class="flecha">➜</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POR QUÉ ELEGIRNOS -->
-  <section class="por-que">
-    <h2>¿Por qué elegir Glamourus Nails Studio?</h2>
-    <p>Queremos que cada visita sea una experiencia especial, no solo un servicio más.</p>
-    <div class="por-que-grid">
-      <div class="por-que-item">
-        <strong>💗 Trato cálido y cercano</strong>
-        Te recibimos con amabilidad y escuchamos lo que realmente necesitas.
-      </div>
-      <div class="por-que-item">
-        <strong>💅 Uñas perfectas y duraderas</strong>
-        Trabajamos con productos de calidad y técnicas profesionales.
-      </div>
-      <div class="por-que-item">
-        <strong>🌸 Ambiente cómodo y relajante</strong>
-        Un espacio pensado para que te relajes y disfrutes tu momento.
-      </div>
-      <div class="por-que-item">
-        <strong>🕒 Horarios flexibles</strong>
-        Atendemos de lunes a domingo, incluyendo feriados.
-      </div>
-    </div>
-  </section>
-
-  <!-- CÓMO FUNCIONA -->
-  <section class="pasos">
-    <h2>¿Cómo agendar tu cita?</h2>
-    <p>Es muy sencillo, hazlo en menos de un minuto desde tu celular.</p>
-    <div class="pasos-grid">
-      <div class="paso-item">
-        <span>1</span>
-        Elige el servicio que deseas (uñas, pestañas, masajes, etc.).
-      </div>
-      <div class="paso-item">
-        <span>2</span>
-        Completa el formulario con tu nombre, WhatsApp y horario preferido.
-      </div>
-      <div class="paso-item">
-        <span>3</span>
-        Te escribiremos por WhatsApp para confirmar tu cita y detalles finales.
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIOS -->
-  <section class="testimonios">
-    <h2>Testimonios de nuestras clientas 💖</h2>
-    <div class="slider">
-      <div class="slide active"><p>⭐⭐⭐⭐⭐ “Excelente atención, mis uñas quedaron perfectas y el ambiente es muy relajante.” – <em>Paula Sofia</em></p></div>
-      <div class="slide"><p>⭐⭐⭐⭐⭐ “El lifting de pestañas me encantó, súper recomendado.” – <em>María</em></p></div>
-      <div class="slide"><p>⭐⭐⭐⭐⭐ “Profesionales y muy amables, siempre salgo feliz.” – <em>Diana</em></p></div>
-      <div class="slide"><p>⭐⭐⭐⭐⭐ “Me encantó el trato y la dedicación, sin duda volveré pronto 💅.” – <em>Andrea</em></p></div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="contacto">
-    <h2>Horarios y Ubicación</h2>
-    <p>🕒 Lunes a Domingo, 10:00 a 19:00 (incluye feriados)</p>
-    <p>📍 <a href="https://www.google.com/maps?q=0%C2%B005'22.7%22S+78%C2%B028'21.2%22W" target="_blank">Carcelén Alto – Quito</a></p>
-    <p>📞 WhatsApp: <a href="https://wa.me/593987356186" target="_blank">0987356186</a></p>
-  </section>
-  
-  <!-- BLOQUE INTERNO -->
-  <div class="bloque-interno">
-    <p class="bloque-interno-titulo">Zona interna para el equipo de Glamourus 💼</p>
-    <div class="bloque-interno-grid">
-      <a href="Recordatorios.html" class="link-interno link-manicuristas">
-        <span class="icon">📋</span>
-        <span>Ingresar recordatorios</span>
-      </a>
-      <a href="citas.html" class="link-interno link-admin">
-        <span class="icon">📅</span>
-        <span>Control de citas</span>
-      </a>
-      <a href="servicios.html" class="link-interno link-admin">
-        <span class="icon">💄</span>
-        <span>Servicios del spa</span>
-      </a>
-    </div>
-  </div>
-
-  <footer>
-    © 2025 GLAMOURUS NAILS STUDIO | Diseñado con ❤️ en Quito
-  </footer>
-
-  <!-- BOTÓN WHATSAPP FLOTANTE -->
-  <a href="https://wa.me/593987356186?text=Hola!%20Quiero%20una%20cita%20en%20GLAMOURUS%20NAILS%20STUDIO%20💅"
-     class="whatsapp-float" target="_blank" rel="noopener">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
-    <span>Chatea con nosotras</span>
-  </a>
-
-<!-- CHATBOT NUEVO -->
-<div class="chatbot-bubble" onclick="toggleChat()">
-  💖
-</div>
-
-<div class="chatbot-window" id="chatWindow">
-  <div class="chatbot-top">
-    <div class="chatbot-avatar">G</div>
-    <div class="chatbot-top-text">
-      <strong>Asistente Glamourus</strong>
-      <span>Resolvemos tus dudas en segundos ✨</span>
-    </div>
-    <button class="chatbot-close" onclick="toggleChat()">✕</button>
-  </div>
-
-  <div class="chatbot-body">
-    <p>¿Qué quieres hacer hoy?</p>
-
-    <button class="chatbot-btn"
-      onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'});">
-      <span class="iconito">💅</span> Ver todos los servicios
-    </button>
-
-    <button class="chatbot-btn"
-      onclick="window.location.href='agendar.html'">
-      <span class="iconito">📅</span> Agendar cita online
-    </button>
-
-    <button class="chatbot-btn"
-      onclick="window.open('https://wa.me/593987356186','_blank')">
-      <span class="iconito">💬</span> Escribir por WhatsApp
-    </button>
-
-    <button class="chatbot-btn"
-      onclick="window.open('https://www.google.com/maps?q=0%C2%B005%2722.7%22S+78%C2%B028%2721.2%22W','_blank')">
-      <span class="iconito">📍</span> Ver ubicación en el mapa
-    </button>
-  </div>
-</div>
-
-
-  <!-- BOTÓN FLOTANTE AGENDAR AHORA -->
-  <div class="agendar-float" onclick="window.location.href='agendar.html'">
-    💅 Agendar Ahora
-  </div>
-
-  <script>
-    // Slider automático testimonios
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    setInterval(() => {
-      if (!slides.length) return;
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }, 4000);
-
-    // Aparición de categorías
-    const categorias = document.querySelectorAll('.categoria');
-    function mostrarCategorias() {
-      const trigger = window.innerHeight * 0.9;
-      categorias.forEach(el => {
-        if (el.getBoundingClientRect().top < trigger) el.classList.add('visible');
-      });
-    }
-    window.addEventListener('scroll', mostrarCategorias);
-    mostrarCategorias();
-
-    // Frases animadas
-    const frases = [
-      "Belleza con estilo ✨",
-      "Confianza y glamour 💖",
-      "Cuidamos cada detalle 💅",
-      "Tu bienestar, nuestra pasión 🌸"
-    ];
-    let fraseIndex = 0;
-    const fraseElement = document.querySelector("#frase-animada");
-    if (fraseElement) {
-      fraseElement.textContent = frases[fraseIndex];
-      setInterval(() => {
-        fraseIndex = (fraseIndex + 1) % frases.length;
-        fraseElement.textContent = frases[fraseIndex];
-      }, 4000);
-    }
-
-    // Abrir/cerrar modales por tipo
-    function abrirServicios(tipo) {
-      const overlay = document.getElementById("overlay-" + tipo);
-      if (overlay) overlay.style.display = "flex";
-    }
-    function cerrarServicios(tipo) {
-      const overlay = document.getElementById("overlay-" + tipo);
-      if (overlay) overlay.style.display = "none";
-    }
-
-    // Ir a agendar con servicio
-    function irAgendar(servicio) {
-      window.location.href = "agendar.html?servicio=" + encodeURIComponent(servicio);
-    }
-
-    // Abrir/cerrar grupos en modal uñas
-    function toggleGrupo(boton) {
-      boton.classList.toggle("abierto");
-      const body = boton.nextElementSibling;
-      if (!body) return;
-      const visible = body.style.display === "block";
-      body.style.display = visible ? "none" : "block";
-    }
-
-    // Chatbot toggle
-    function toggleChat() {
-      const chat = document.getElementById("chatWindow");
-      chat.style.display = chat.style.display === "block" ? "none" : "block";
-    }
-  </script>
-
-</body>
-</html>
+            <button class="btn-servicio-unas" onclick="irAg
 
