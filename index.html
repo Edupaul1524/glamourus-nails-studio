@@ -411,58 +411,37 @@
       font-size: .9rem;
     }
 
-    /* BOTÓN WHATSAPP flotante */
-    .whatsapp-float {
+    /* FABs redondos (robot, agendar, whatsapp) */
+    .fab {
       position: fixed;
-      bottom: 18px;
-      right: 18px;
-      background-color: #25d366;
-      border-radius: 999px;
-      padding: 0.45rem 0.9rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 900;
-      transition: transform .2s, box-shadow .2s;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
-    .whatsapp-float:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-    }
-    .whatsapp-float img {
-      width: 22px;
-      height: 22px;
-      display: block;
-    }
-
-    /* BOTÓN FLOTANTE AGENDAR AHORA */
-    .agendar-float {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: #d63384;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      z-index: 900;
+      justify-content: center;
       cursor: pointer;
-      transition: .2s;
-      text-decoration: none;
+      z-index: 950;
+      transition: transform .25s, box-shadow .25s;
+      overflow: hidden;
     }
-    .agendar-float:hover {
-      background: #b02a6e;
-      transform: scale(1.05);
+    .fab img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+    .fab:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .fab-chat { bottom: 150px; }
+    .fab-agendar { bottom: 85px; }
+    .fab-whatsapp { bottom: 20px; }
 
-    /* MODALES DE SERVICIOS (reutilizados) */
+    /* MODALES DE SERVICIOS */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -567,37 +546,10 @@
       box-shadow: 0 3px 8px rgba(0,0,0,0.06);
     }
 
-    /* CHATBOT GLAMOURUS (con robot) */
-    .chatbot-bubble {
-      position: fixed;
-      bottom: 95px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #ffffff;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 950;
-      transition: transform .25s, box-shadow .25s;
-      overflow: hidden;
-    }
-    .chatbot-bubble img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .chatbot-bubble:hover {
-      transform: scale(1.08);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
-
+    /* CHATBOT CON ROBOT */
     .chatbot-window {
       position: fixed;
-      bottom: 170px;
+      bottom: 215px;
       right: 20px;
       width: 300px;
       background: #fff;
@@ -605,7 +557,7 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
       padding: 1rem;
       display: none;
-      z-index: 950;
+      z-index: 960;
       animation: fadeIn .3s ease;
       font-size: 0.85rem;
     }
@@ -978,9 +930,7 @@
     </div>
   </div>
 
-  <!-- MODALES CABELLO / CERA / GILLETTE / PESTAÑAS / MASAJES -->
-  <!-- (para ahorrar espacio de explicación, dejo solo uno como ejemplo, los demás ya estaban bien en tu versión anterior; puedes copiarlos igual cambiando el id y los textos) -->
-
+  <!-- MODAL CABELLO (ejemplo) -->
   <div id="overlay-cabello" class="modal-overlay">
     <div class="modal-unas">
       <div class="modal-header">
@@ -1012,7 +962,7 @@
     </div>
   </div>
 
-  <!-- (los otros modales: overlay-cera, overlay-gillette, overlay-pestanas, overlay-masajes los mantienes igual que en tu versión anterior con los mismos botones) -->
+  <!-- AQUÍ IRÍAN TUS OTROS MODALES: overlay-cera, overlay-gillette, overlay-pestanas, overlay-masajes (igual que los tenías antes) -->
 
   <!-- POR QUÉ ELEGIRNOS -->
   <section class="por-que">
@@ -1100,23 +1050,23 @@
     © 2025 GLAMOURUS NAILS STUDIO | Diseñado con ❤️ en Quito
   </footer>
 
-  <!-- BOTÓN WHATSAPP FLOTANTE -->
-  <a href="https://wa.me/593987356186?text=Hola!%20Quiero%20una%20cita%20en%20GLAMOURUS%20NAILS%20STUDIO%20💅"
-     class="whatsapp-float" target="_blank" rel="noopener">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
-    <span>Chatea con nosotras</span>
-  </a>
-
-  <!-- BOTÓN FLOTANTE AGENDAR AHORA -->
-  <a class="agendar-float" href="agendar.html">
-    💅 Agendar Ahora
-  </a>
-
-  <!-- CHATBOT ROBOT -->
-  <div class="chatbot-bubble" onclick="toggleChat()">
+  <!-- FABs redondos -->
+  <!-- Robot / Chatbot -->
+  <div class="fab fab-chat" onclick="toggleChat()">
     <img src="robot.png" alt="Asistente Glamourus">
   </div>
 
+  <!-- Agendar ahora -->
+  <a class="fab fab-agendar" href="agendar.html" title="Agendar cita">
+    <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" alt="Agendar cita">
+  </a>
+
+  <!-- WhatsApp -->
+  <a class="fab fab-whatsapp" href="https://wa.me/593987356186?text=Hola!%20Quiero%20una%20cita%20en%20GLAMOURUS%20NAILS%20STUDIO%20💅" target="_blank" rel="noopener" title="Chatea con nosotras">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
+  </a>
+
+  <!-- CHATBOT WINDOW -->
   <div class="chatbot-window" id="chatWindow">
     <div class="chatbot-header">
       <div class="chatbot-header-title">GlamourBot 💅</div>
@@ -1314,3 +1264,4 @@
   </script>
 </body>
 </html>
+
